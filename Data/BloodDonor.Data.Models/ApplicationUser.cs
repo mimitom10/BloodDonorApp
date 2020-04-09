@@ -3,7 +3,7 @@ namespace BloodDonor.Data.Models
 {
     using System;
     using System.Collections.Generic;
-
+    using System.ComponentModel.DataAnnotations;
     using BloodDonor.Data.Common.Models;
 
     using Microsoft.AspNetCore.Identity;
@@ -16,6 +16,9 @@ namespace BloodDonor.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
+            this.Notifications = new HashSet<Notification>();
+            this.Requests = new HashSet<Request>();
+            this.Responses = new HashSet<Response>();
         }
 
         // Audit info
@@ -33,5 +36,17 @@ namespace BloodDonor.Data.Models
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        public string FullName { get; set; }
+
+        [Required]
+        public int LocationId { get; set; }
+        public virtual Location Location { get; set; }
+        public virtual ICollection<Notification> Notifications { get; set; }
+
+        public virtual ICollection<Request> Requests { get; set; }
+        public virtual ICollection<Response> Responses { get; set; }
     }
 }
