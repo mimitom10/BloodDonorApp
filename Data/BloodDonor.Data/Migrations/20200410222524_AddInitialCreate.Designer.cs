@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BloodDonor.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200409202702_AddInitialModels")]
-    partial class AddInitialModels
+    [Migration("20200410222524_AddInitialCreate")]
+    partial class AddInitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -163,7 +163,7 @@ namespace BloodDonor.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Location");
+                    b.ToTable("Locations");
                 });
 
             modelBuilder.Entity("BloodDonor.Data.Models.Notification", b =>
@@ -198,7 +198,7 @@ namespace BloodDonor.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Notification");
+                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("BloodDonor.Data.Models.Request", b =>
@@ -239,7 +239,7 @@ namespace BloodDonor.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Request");
+                    b.ToTable("Requests");
                 });
 
             modelBuilder.Entity("BloodDonor.Data.Models.Response", b =>
@@ -280,7 +280,7 @@ namespace BloodDonor.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Response");
+                    b.ToTable("Responses");
                 });
 
             modelBuilder.Entity("BloodDonor.Data.Models.Setting", b =>

@@ -161,7 +161,7 @@ namespace BloodDonor.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Location");
+                    b.ToTable("Locations");
                 });
 
             modelBuilder.Entity("BloodDonor.Data.Models.Notification", b =>
@@ -196,7 +196,7 @@ namespace BloodDonor.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Notification");
+                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("BloodDonor.Data.Models.Request", b =>
@@ -237,7 +237,7 @@ namespace BloodDonor.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Request");
+                    b.ToTable("Requests");
                 });
 
             modelBuilder.Entity("BloodDonor.Data.Models.Response", b =>
@@ -278,7 +278,7 @@ namespace BloodDonor.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Response");
+                    b.ToTable("Responses");
                 });
 
             modelBuilder.Entity("BloodDonor.Data.Models.Setting", b =>

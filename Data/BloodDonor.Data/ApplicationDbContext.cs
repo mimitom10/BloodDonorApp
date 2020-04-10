@@ -25,6 +25,12 @@
         }
 
         public DbSet<Setting> Settings { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<Request> Requests { get; set; }
+        public DbSet<Response> Responses { get; set; }
+
+
 
         public override int SaveChanges() => this.SaveChanges(true);
 
