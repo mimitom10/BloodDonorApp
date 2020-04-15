@@ -1,0 +1,27 @@
+﻿@model BloodDonor.Web.ViewModels.Donors.DonorRegisterInputModel
+
+
+
+<h1>Register as Donor</h1>
+<form method="post" asp-action="Register">
+
+        <div class="form-group">
+            <label for="fullName1">Full Name*</label>
+            <input type="text" class="form-control" id="exampleInputFullName1" placeholder="Enter First and Last Name">
+            <small id="nameHelp" class="form-text text-muted">We'll never share your details with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number*</label>
+            <input type="text" class="form-control" id="phoneNumber1" placeholder="Enter Phone number" />
+            <span class="help-block">Your phone number won't be disclosed anywhere </span>
+        </div>
+        <div class="form-group">
+            <label for="bloodType1">Blood Type</label>
+            <input type="text" class="form-control" id="exampleBloodType1" placeholder="Enter BloodType here">
+        </div>
+        <div class="form-group">
+            <span class="help-block">*Required fields</span>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    
+     </form>

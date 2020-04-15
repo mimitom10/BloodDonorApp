@@ -1,9 +1,9 @@
-﻿using System;
-
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace BloodDonor.Data.Migrations
+﻿namespace BloodDonor.Data.Migrations
 {
+    using System;
+
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class AddInitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

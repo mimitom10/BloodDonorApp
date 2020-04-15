@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BloodDonor.Data.Models
+﻿namespace BloodDonor.Data.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
     public class Location
     {
         public Location()
