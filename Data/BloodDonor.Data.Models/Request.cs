@@ -1,4 +1,5 @@
 ﻿using BloodDonor.Data.Common.Models;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -20,7 +21,6 @@ namespace BloodDonor.Data.Models
         public string UserId { get; set; }
 
         public virtual ApplicationUser User { get; set; }
-
 
     }
 }

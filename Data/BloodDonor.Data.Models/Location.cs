@@ -8,11 +8,13 @@ namespace BloodDonor.Data.Models
     {
         public Location()
         {
-            this.Users = new HashSet<ApplicationUser>();
+            this.Donors = new HashSet<Donor>();
         }
+
         public int Id { get; set; }
+
         public string TownName { get; set; }
 
-        public virtual ICollection<ApplicationUser> Users { get; set; }
+        public virtual ICollection<Donor> Donors { get; set; }
     }
 }

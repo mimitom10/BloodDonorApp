@@ -1,4 +1,5 @@
 ﻿using BloodDonor.Data.Common.Models;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +9,7 @@ namespace BloodDonor.Data.Models
 {
     public class Response : BaseDeletableModel<int>
     {
-        public string BloodType { get; set; }
+      //  public string BloodType { get; set; }
 
         public int Quantity { get; set; }
 
@@ -17,8 +18,8 @@ namespace BloodDonor.Data.Models
         public string Details { get; set; }
 
         [Required]
-        public string UserId { get; set; }
+        public string DonorId { get; set; }
 
-        public virtual ApplicationUser User { get; set; }
+        public virtual Donor Donor { get; set; }
     }
 }
