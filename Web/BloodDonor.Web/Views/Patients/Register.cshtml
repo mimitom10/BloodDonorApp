@@ -1,0 +1,17 @@
+﻿@model BloodDonor.Web.ViewModels.Patients.PatientRegisterInputModel
+
+<h1>Register as Patient</h1>
+<form method="post" asp-action="Register">
+
+    <div class="form-group">
+        <label for="fullName1">Full Name*</label>
+        <input type="text" class="form-control" id="exampleInputFullName1" placeholder="Enter First and Last Name">
+        <small id="nameHelp" class="form-text text-muted">We'll never share your details with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="bloodType1">Blood Type</label>
+        <input type="text" class="form-control" id="exampleBloodType1" placeholder="Enter BloodType here">
+    </div>
+    <button type="submit" class="btn btn-danger">Submit</button>
+
+</form>

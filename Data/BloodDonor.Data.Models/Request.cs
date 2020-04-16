@@ -18,9 +18,9 @@
         public string Details { get; set; }
 
         [Required]
-        public string UserId { get; set; }
+        public string PatientId { get; set; }
 
-        public virtual ApplicationUser User { get; set; }
+        public virtual Patient Patient { get; set; }
 
     }
 }

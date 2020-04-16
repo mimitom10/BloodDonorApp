@@ -7,6 +7,7 @@
 
     using BloodDonor.Data.Common.Repositories;
     using BloodDonor.Data.Models;
+    using Microsoft.AspNetCore.Identity;
 
     public class DonorsService : IDonorsService
     {
@@ -17,17 +18,34 @@
             this.donorsRepository = donorsRepository;
         }
 
-        public async Task RegisterAsync(string fullName, string phoneNumber, string bloodType)
+        //public async Task<string> RegisterAsync(string fullName, string phoneNumber, string bloodType, string userId)
+        //{
+        //    var donor = new Donor
+        //    {
+        //        FullName = fullName,
+        //        PhoneNumber = phoneNumber,
+        //        BloodType = bloodType,
+        //        UserId = userId,
+
+        //    };
+        //    await this.donorsRepository.AddAsync(donor);
+        //    await this.donorsRepository.SaveChangesAsync();
+        //    return donor.Id;
+        //}
+
+        public string Register(string fullName, string phoneNumber, string bloodType, string userId)
         {
             var donor = new Donor
             {
                 FullName = fullName,
                 PhoneNumber = phoneNumber,
                 BloodType = bloodType,
-            };
-            await this.donorsRepository.AddAsync(donor);
-            await this.donorsRepository.SaveChangesAsync();
+                UserId = userId,
 
+            };
+            this.donorsRepository.AddAsync(donor);
+            this.donorsRepository.SaveChangesAsync();
+            return donor.Id;
         }
     }
 }

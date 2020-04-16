@@ -4,6 +4,8 @@
 
     public interface IDonorsService
     {
-        Task RegisterAsync(string fullName, string phoneNumber, string bloodType);
+       // Task<string> RegisterAsync(string fullName, string phoneNumber, string bloodType, string userId);
+
+        string Register(string fullName, string phoneNumber, string bloodType, string userId);
     }
 }

@@ -8,7 +8,8 @@
     using BloodDonor.Data.Models;
     using BloodDonor.Services.Mapping;
 
-    public class DonorRegisterInputModel : IMapTo<Donor>
+
+    public class DonorRegisterInputModel
     {
         [Required]
         [MaxLength(50)]

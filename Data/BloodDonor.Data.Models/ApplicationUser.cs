@@ -18,7 +18,6 @@ namespace BloodDonor.Data.Models
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
             this.Notifications = new HashSet<Notification>();
-            this.Requests = new HashSet<Request>();
            
         }
 
@@ -47,7 +46,10 @@ namespace BloodDonor.Data.Models
         // public virtual Location Location { get; set; }
         public virtual ICollection<Notification> Notifications { get; set; }
 
-        public virtual ICollection<Request> Requests { get; set; }
+
+        public virtual Donor Donor { get; set; }
+
+     //   public virtual Patient Patient { get; set; }
 
        
     }
