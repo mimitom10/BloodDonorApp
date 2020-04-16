@@ -32,6 +32,8 @@
 
         public DbSet<Notification> Notifications { get; set; }
 
+        public DbSet<Patient> Patients { get; set; }
+
         public DbSet<Request> Requests { get; set; }
 
         public DbSet<Response> Responses { get; set; }
