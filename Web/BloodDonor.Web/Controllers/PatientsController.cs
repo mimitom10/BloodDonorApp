@@ -19,7 +19,7 @@ namespace BloodDonor.Web.Controllers
         private readonly IDeletableEntityRepository<Location> locationsRepository;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public PatientsController(IPatientsService patientsService, IDeletableEntityRepository<Location> locationsRepository, 
+        public PatientsController(IPatientsService patientsService, IDeletableEntityRepository<Location> locationsRepository,
             UserManager<ApplicationUser> userManager)
         {
             this.patientsService = patientsService;

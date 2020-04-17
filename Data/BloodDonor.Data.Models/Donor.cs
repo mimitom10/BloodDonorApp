@@ -18,7 +18,7 @@
         [Requireed]
         [MaxLength(50)]
         public string FullName { get; set; }
-      
+
         [Required]
         public string PhoneNumber { get; set; }
 
