@@ -1,14 +1,17 @@
-﻿namespace BloodDonor.Data.Models
+﻿using BloodDonor.Data.Common.Models;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+
+namespace BloodDonor.Data.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.Text;
-
-    using BloodDonor.Data.Common.Models;
-
-    public class Request : BaseDeletableModel<int>
+    public class Request : BaseDeletableModel<string>
     {
+        public Request()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
         public string BloodType { get; set; }
 
         public int Quantity { get; set; }
@@ -23,4 +26,5 @@
         public virtual Patient Patient { get; set; }
 
     }
+
 }

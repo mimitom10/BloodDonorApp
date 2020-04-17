@@ -18,10 +18,7 @@
         [Requireed]
         [MaxLength(50)]
         public string FullName { get; set; }
-
-      //  [Required]
-      //  public string Town { get; set; }
-
+      
         [Required]
         public string PhoneNumber { get; set; }
 
@@ -29,7 +26,8 @@
 
         // public bool HasCovidAntiBodies { get; set; }
 
-        public int LocationId { get; set; }
+        [Required]
+        public string LocationId { get; set; }
 
         public virtual Location Location { get; set; }
 

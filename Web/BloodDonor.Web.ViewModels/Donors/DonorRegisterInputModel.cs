@@ -9,7 +9,7 @@
     using BloodDonor.Services.Mapping;
 
 
-    public class DonorRegisterInputModel
+    public class DonorRegisterInputModel : IMapFrom<Donor>
     {
         [Required]
         [MaxLength(50)]
@@ -20,6 +20,8 @@
         public string PhoneNumber { get; set; }
 
         public string BloodType { get; set; }
+
+        public string LocationTownName { get; set; }
 
         // public bool HasCovidAntiBodies { get; set; }
 
