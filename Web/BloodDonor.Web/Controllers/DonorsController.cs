@@ -32,24 +32,9 @@
             return this.View();
         }
 
+
         [HttpPost]
         [Authorize]
-
-        //public IActionResult Register(DonorRegisterInputModel input)
-        //{
-
-        //    if (!this.ModelState.IsValid)
-        //    {
-        //        return this.View(input);
-        //    }
-
-        //    var userId = this.User.Claims.FirstOrDefault().ToString();
-        //        //HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        //    var donorId = this.donorsService.Register(input.FullName, input.PhoneNumber, input.BloodType, userId);
-        //    return this.Redirect("/");
-        //}
-
-
 
         public async Task<IActionResult> Register(DonorRegisterInputModel input)
         {
@@ -75,5 +60,18 @@
         }
 
 
+        //public IActionResult Register(DonorRegisterInputModel input)
+        //{
+
+        //    if (!this.ModelState.IsValid)
+        //    {
+        //        return this.View(input);
+        //    }
+
+        //    var userId = this.User.Claims.FirstOrDefault().ToString();
+        //        //HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        //    var donorId = this.donorsService.Register(input.FullName, input.PhoneNumber, input.BloodType, userId);
+        //    return this.Redirect("/");
+        //}
     }
 }

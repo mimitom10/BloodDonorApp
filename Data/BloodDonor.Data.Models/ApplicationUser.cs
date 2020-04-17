@@ -49,7 +49,7 @@ namespace BloodDonor.Data.Models
 
         public virtual Donor Donor { get; set; }
 
-      //  public virtual Patient Patient { get; set; }
+        public virtual Patient Patient { get; set; }
 
        
     }

@@ -7,12 +7,21 @@ using System.Text;
 
 namespace BloodDonor.Web.ViewModels.Patients
 {
-    public class PatientRegisterInputModel : IMapTo<Patient>
+    public class PatientRegisterInputModel : IMapFrom<Patient>
     {
         [Required]
         [MaxLength(50)]
         public string FullName { get; set; }
 
+        [Required]
+        public string PhoneNumber { get; set; }
+
+        [Required]
         public string BloodType { get; set; }
+
+        public string LocationTownName { get; set; }
+
+
+
     }
 }

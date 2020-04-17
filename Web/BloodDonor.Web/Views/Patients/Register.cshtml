@@ -1,7 +1,39 @@
 ﻿@model BloodDonor.Web.ViewModels.Patients.PatientRegisterInputModel
 
 <h1>Register as Patient</h1>
+
+
 <form method="post" asp-action="Register">
+    <div>
+        <label asp-for="FullName"></label>
+        <input asp-for="FullName" class="form-control" />
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="LocationTownName"></label>
+        <input asp-for="LocationTownName" class="form-control" />
+        <span asp-validation-for="LocationTownName" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="PhoneNumber"></label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="BloodType"></label>
+        <input asp-for="BloodType" class="form-control" />
+        <span asp-validation-for="BloodType" class="text-danger"></span>
+    </div>
+    <hr />
+    <input type="submit" class="btn btn-primary" />
+</form>
+
+
+
+@*<form method="post" asp-action="Register">
 
     <div class="form-group">
         <label for="fullName1">Full Name*</label>
@@ -14,4 +46,4 @@
     </div>
     <button type="submit" class="btn btn-danger">Submit</button>
 
-</form>
+</form>*@

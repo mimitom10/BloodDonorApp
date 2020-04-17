@@ -17,7 +17,26 @@ namespace BloodDonor.Data.Models
         [MaxLength(50)]
         public string FullName { get; set; }
 
+        [Required]
+        public string PhoneNumber { get; set; }
+
+        [Required]
         public string BloodType { get; set; }
+
+        public bool HasBeenResponsed { get; set; }
+
+        [Required]
+        public string LocationId { get; set; }
+
+        public virtual Location Location { get; set; }
+
+        [Required]
+        public string UserId { get; set; }
+
+        public virtual ApplicationUser User { get; set; }
+
+
+        public virtual ICollection<Request> Requests { get; set; }
 
     }
 }
