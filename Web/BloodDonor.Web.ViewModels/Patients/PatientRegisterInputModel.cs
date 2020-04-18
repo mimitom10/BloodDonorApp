@@ -21,7 +21,5 @@ namespace BloodDonor.Web.ViewModels.Patients
 
         public string LocationTownName { get; set; }
 
-
-
     }
 }

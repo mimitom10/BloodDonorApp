@@ -14,13 +14,11 @@ namespace BloodDonor.Data.Models
             this.Patients = new HashSet<Patient>();
         }
 
-
         public string TownName { get; set; }
 
         public virtual ICollection<Donor> Donors { get; set; }
 
         public virtual ICollection<Patient> Patients { get; set; }
-
 
     }
 

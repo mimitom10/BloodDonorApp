@@ -6,6 +6,6 @@
     {
         Task<string> RegisterAsync(string fullName, string phoneNumber, string bloodType, string locationId, string userId);
 
-       // string Register(string fullName, string phoneNumber, string bloodType, string userId);
+        // string Register(string fullName, string phoneNumber, string bloodType, string userId);
     }
 }

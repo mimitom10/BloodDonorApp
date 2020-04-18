@@ -8,7 +8,6 @@
     using BloodDonor.Data.Models;
     using BloodDonor.Services.Mapping;
 
-
     public class DonorRegisterInputModel : IMapFrom<Donor>
     {
         [Required]

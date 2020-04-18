@@ -44,13 +44,11 @@ namespace BloodDonor.Data.Models
         // [Required]
         // public int LocationId { get; set; }
         // public virtual Location Location { get; set; }
-       public virtual ICollection<Notification> Notifications { get; set; }
-
+        public virtual ICollection<Notification> Notifications { get; set; }
 
         public virtual Donor Donor { get; set; }
 
         public virtual Patient Patient { get; set; }
-
 
     }
 }

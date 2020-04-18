@@ -7,6 +7,8 @@ namespace BloodDonor.Services.Data.RequestsServices
 {
     public interface IRequestsService
     {
-        Task<string> AddAsync(int quantity, string medicalCondition, string personalMessage, string patientId);
+        IEnumerable<T> GetAll<T>();
+
+        Task<string> AddAsync(string patientId, int quantity, string medicalCondition, string personalMessage);
     }
 }

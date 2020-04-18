@@ -36,7 +36,6 @@
 
         public virtual ApplicationUser User { get; set; }
 
-
         public virtual ICollection<Response> Responses { get; set; }
 
     }

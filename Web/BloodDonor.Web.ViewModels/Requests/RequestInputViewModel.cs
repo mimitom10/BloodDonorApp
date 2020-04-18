@@ -8,6 +8,9 @@ namespace BloodDonor.Web.ViewModels.Requests
     public class RequestInputViewModel
     {
         [Required]
+        public string PatientId { get; set; }
+
+        [Required]
         [Range(1, 5)]
         public int Quantity { get; set; }
 
@@ -17,8 +20,6 @@ namespace BloodDonor.Web.ViewModels.Requests
 
         [MaxLength(300)]
         public string PeronalMessage { get; set; }
-
-       
 
     }
 }

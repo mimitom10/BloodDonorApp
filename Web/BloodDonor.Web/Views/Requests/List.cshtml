@@ -1,0 +1,19 @@
+﻿@model BloodDonor.Web.ViewModels.Requests.RequestListViewModel
+
+    <h1>Add your Request</h1>
+
+    <div class="row">
+        @foreach (var request in Model.Requests)
+        {
+            <div class="col-md-4 media">
+                <div class="media-body">
+                    <h5 class="mt-0">
+                        <a href="@request.Url">
+                            @request.PatientFullName
+                        </a>
+                    </h5>
+                    @request.PatientBloodType
+                </div>
+            </div>
+        }
+    </div>

@@ -35,7 +35,6 @@ namespace BloodDonor.Data.Models
 
         public virtual ApplicationUser User { get; set; }
 
-
         public virtual ICollection<Request> Requests { get; set; }
 
     }

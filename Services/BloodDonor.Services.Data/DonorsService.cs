@@ -18,7 +18,7 @@
             this.donorsRepository = donorsRepository;
         }
 
-        public async Task<string> RegisterAsync(string fullName, string phoneNumber, string bloodType,string locationId, string userId)
+        public async Task<string> RegisterAsync(string fullName, string phoneNumber, string bloodType, string locationId, string userId)
         {
             var donor = new Donor
             {
