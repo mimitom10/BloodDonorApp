@@ -1,11 +1,12 @@
-﻿using BloodDonor.Data.Common.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace BloodDonor.Data.Models
+﻿namespace BloodDonor.Data.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Text;
+
+    using BloodDonor.Data.Common.Models;
+
     public class Request : BaseDeletableModel<string>
     {
         public Request()
@@ -22,7 +23,7 @@ namespace BloodDonor.Data.Models
         public string MedicalCondition { get; set; }
 
         [MaxLength(300)]
-        public string PeronalMessage { get; set; }
+        public string PersonalMessage { get; set; }
 
         [Required]
         public string PatientId { get; set; }

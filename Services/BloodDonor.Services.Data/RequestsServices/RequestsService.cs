@@ -1,14 +1,15 @@
-﻿using BloodDonor.Data.Common.Repositories;
-using BloodDonor.Data.Models;
-using BloodDonor.Services.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BloodDonor.Services.Data.RequestsServices
+﻿namespace BloodDonor.Services.Data.RequestsServices
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    using BloodDonor.Data.Common.Repositories;
+    using BloodDonor.Data.Models;
+    using BloodDonor.Services.Mapping;
+
     public class RequestsService : IRequestsService
     {
         private readonly IDeletableEntityRepository<Request> requestsRepository;
@@ -26,7 +27,7 @@ namespace BloodDonor.Services.Data.RequestsServices
                 PatientId = patientId,
                 Quantity = quantity,
                 MedicalCondition = medicalCondition,
-                PeronalMessage = personalMessage,
+                PersonalMessage = personalMessage,
             };
             await this.requestsRepository.AddAsync(request);
             await this.requestsRepository.SaveChangesAsync();

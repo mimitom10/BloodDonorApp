@@ -1,10 +1,11 @@
-﻿using BloodDonor.Data.Common.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BloodDonor.Data.Models
+﻿namespace BloodDonor.Data.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    using BloodDonor.Data.Common.Models;
+
     public class Location : BaseDeletableModel<string>
     {
         public Location()

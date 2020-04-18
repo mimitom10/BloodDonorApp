@@ -1,12 +1,13 @@
-﻿using BloodDonor.Data.Models;
-using BloodDonor.Services.Mapping;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace BloodDonor.Web.ViewModels.Patients
+﻿namespace BloodDonor.Web.ViewModels.Patients
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Text;
+
+    using BloodDonor.Data.Models;
+    using BloodDonor.Services.Mapping;
+
     public class PatientRegisterInputModel : IMapFrom<Patient>
     {
         [Required]

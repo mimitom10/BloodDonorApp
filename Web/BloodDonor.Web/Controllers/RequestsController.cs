@@ -1,18 +1,18 @@
-﻿using BloodDonor.Data.Common.Repositories;
-using BloodDonor.Data.Models;
-using BloodDonor.Services.Data.RequestsServices;
-using BloodDonor.Web.ViewModels.Requests;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-
-namespace BloodDonor.Web.Controllers
+﻿namespace BloodDonor.Web.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using BloodDonor.Data.Common.Repositories;
+    using BloodDonor.Data.Models;
+    using BloodDonor.Services.Data.RequestsServices;
+    using BloodDonor.Web.ViewModels.Requests;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+
     public class RequestsController : Controller
     {
         private readonly IRequestsService requestsService;
@@ -80,20 +80,12 @@ namespace BloodDonor.Web.Controllers
             //}
 
 
-            //  var userId = this.userManager.GetUserId(this.User);
-            var userId = this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var patient = this.patientsRepository.All().Where(x => x.UserId == userId).FirstOrDefault();
+              var userId = this.userManager.GetUserId(this.User);
+               var patient = this.patientsRepository.All().Where(x => x.UserId == userId).FirstOrDefault();
             var patientId = patient.Id;
 
-            //var query = this.postsRepository.All()
-            //.OrderByDescending(x => x.CreatedOn)
-            //.Where(x => x.CategoryId == categoryId).Skip(skip);
-            //FirstOrDefault(x => x.UserId == userId);
 
-
-            //  var patientId = 
-
-            var requestId = await this.requestsService.AddAsync(patientId, input.Quantity, input.MedicalCondition, input.PeronalMessage);
+            var requestId = await this.requestsService.AddAsync(patientId, input.Quantity, input.MedicalCondition, input.PersonalMessage);
             
             return this.Redirect("/Requests/List");
         }

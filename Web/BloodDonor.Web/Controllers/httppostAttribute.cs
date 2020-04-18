@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace BloodDonor.Web.Controllers
+﻿namespace BloodDonor.Web.Controllers
 {
+    using System;
+
     internal class httppostAttribute : Attribute
     {
     }

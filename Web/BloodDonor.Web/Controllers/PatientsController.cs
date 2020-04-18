@@ -1,18 +1,19 @@
-﻿using BloodDonor.Data.Common.Repositories;
-using BloodDonor.Data.Models;
-using BloodDonor.Services.Data;
-using BloodDonor.Web.ViewModels.Patients;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-
-namespace BloodDonor.Web.Controllers
+﻿namespace BloodDonor.Web.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+
+    using BloodDonor.Data.Common.Repositories;
+    using BloodDonor.Data.Models;
+    using BloodDonor.Services.Data;
+    using BloodDonor.Web.ViewModels.Patients;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+
     public class PatientsController : Controller
     {
         private readonly IPatientsService patientsService;

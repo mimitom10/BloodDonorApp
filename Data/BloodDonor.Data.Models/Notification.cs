@@ -1,11 +1,12 @@
-﻿using BloodDonor.Data.Common.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace BloodDonor.Data.Models
+﻿namespace BloodDonor.Data.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Text;
+
+    using BloodDonor.Data.Common.Models;
+
     public class Notification : BaseDeletableModel<string>
     {
         public Notification()

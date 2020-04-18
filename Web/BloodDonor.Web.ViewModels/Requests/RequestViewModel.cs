@@ -1,11 +1,12 @@
-﻿using BloodDonor.Data.Models;
-using BloodDonor.Services.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BloodDonor.Web.ViewModels.Requests
+﻿namespace BloodDonor.Web.ViewModels.Requests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    using BloodDonor.Data.Models;
+    using BloodDonor.Services.Mapping;
+
     public class RequestViewModel : IMapFrom<Request>
     {
         public string PatientFullName { get; set; }

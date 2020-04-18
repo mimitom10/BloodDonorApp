@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BloodDonor.Services.Data.RequestsServices
+﻿namespace BloodDonor.Services.Data.RequestsServices
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using System.Threading.Tasks;
+
     public interface IRequestsService
     {
         IEnumerable<T> GetAll<T>();

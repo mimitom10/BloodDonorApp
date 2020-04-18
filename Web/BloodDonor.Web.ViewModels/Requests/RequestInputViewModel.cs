@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace BloodDonor.Web.ViewModels.Requests
+﻿namespace BloodDonor.Web.ViewModels.Requests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Text;
+
     public class RequestInputViewModel
     {
         [Required]
@@ -19,7 +19,7 @@ namespace BloodDonor.Web.ViewModels.Requests
         public string MedicalCondition { get; set; }
 
         [MaxLength(300)]
-        public string PeronalMessage { get; set; }
+        public string PersonalMessage { get; set; }
 
     }
 }
