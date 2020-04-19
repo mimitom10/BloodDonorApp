@@ -13,6 +13,7 @@
         {
             this.Id = Guid.NewGuid().ToString();
         }
+
         public string Messqaage { get; set; }
 
         [Required]

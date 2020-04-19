@@ -15,12 +15,12 @@
 
         public string PatientLocationTownName { get; set; }
 
-        public string Url => $"/{this.PatientFullName.Replace(' ', '-')}";
+        public int Quantity { get; set; }
 
-        // public int Quantity { get; set; }
+        public string MedicalCondition { get; set; }
 
-        // public string MedicalCondition { get; set; }
+        public string PeronalMessage { get; set; }
 
-        // public string PeronalMessage { get; set; }
+        public string Url => $"/Requests/{this.PatientFullName.Replace(' ', '-')}";
     }
 }

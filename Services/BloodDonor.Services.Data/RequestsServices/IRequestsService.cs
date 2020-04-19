@@ -10,5 +10,7 @@
         IEnumerable<T> GetAll<T>();
 
         Task<string> AddAsync(string patientId, int quantity, string medicalCondition, string personalMessage);
+
+        T SelectRequest<T>(string patientFullName);
     }
 }

@@ -21,7 +21,6 @@
 
         public async Task<string> AddAsync(string patientId, int quantity, string medicalCondition, string personalMessage)
         {
-
             var request = new Request
             {
                 PatientId = patientId,
@@ -39,8 +38,15 @@
             IQueryable<Request> query =
                  this.requestsRepository.All().OrderBy(x => x.Patient.FullName);
 
-
             return query.To<T>().ToList();
+        }
+
+        public T SelectRequest<T>(string patientFullName)
+        {
+            var request = this.requestsRepository.All()
+                .Where(x => x.Patient.FullName.Replace(" ", "-") == patientFullName.Replace(" ", "-"))
+                .To<T>().FirstOrDefault();
+            return request;
         }
     }
 }

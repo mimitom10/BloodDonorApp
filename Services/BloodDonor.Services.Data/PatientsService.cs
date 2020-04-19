@@ -16,6 +16,7 @@
         {
             this.patientsRepository = patientsRepository;
         }
+
         public async Task<string> RegisterAsync(string fullName, string phoneNumber, string bloodType, string locationId, string userId)
         {
             var patient = new Patient

@@ -2,6 +2,7 @@
 {
     using System.Linq;
     using System.Threading.Tasks;
+
     using BloodDonor.Data.Common.Repositories;
     using BloodDonor.Data.Models;
     using BloodDonor.Services.Data;
@@ -11,6 +12,7 @@
     using Microsoft.AspNetCore.Mvc;
 
     using System.Security.Claims;
+
     public class DonorsController : Controller
     {
         private readonly IDonorsService donorsService;
@@ -19,7 +21,7 @@
 
         public DonorsController(IDonorsService donorsService,
            IDeletableEntityRepository<Location> locationsRepository,
-            UserManager<ApplicationUser> userManage)
+           UserManager<ApplicationUser> userManage)
         {
             this.donorsService = donorsService;
             this.locationsRepository = locationsRepository;
@@ -37,7 +39,6 @@
 
         public async Task<IActionResult> Register(DonorRegisterInputModel input)
         {
-
             if (!this.ModelState.IsValid)
             {
                 return this.View(input);
@@ -55,7 +56,7 @@
             //this.User.Claims.FirstOrDefault().ToString();
             var locationId = location.Id;
             var donorId = await this.donorsService.RegisterAsync(input.FullName, input.PhoneNumber, input.BloodType, locationId, userId);
-            return this.Redirect("/");
+            return this.Redirect("/Requests/List");
         }
 
     }

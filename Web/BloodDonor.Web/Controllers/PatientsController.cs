@@ -39,7 +39,6 @@
 
         public async Task<IActionResult> Register(PatientRegisterInputModel input)
         {
-
             if (!this.ModelState.IsValid)
             {
                 return this.View(input);
