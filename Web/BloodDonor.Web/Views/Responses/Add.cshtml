@@ -1,0 +1,29 @@
+﻿@model BloodDonor.Web.ViewModels.Responses.ResponseInputViewModel
+
+
+<h1>Thank you for helping!</h1>
+
+
+
+<form method="post" asp-action="Add">
+   
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown button
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">True</a>
+            <a class="dropdown-item" href="#">Anonymous Donation</a>
+            <a class="dropdown-item" href="#">Open Donation</a>
+        </div>
+    </div>
+
+    <div>
+        <label asp-for="Details"></label>
+        <input asp-for="Details" class="form-control" />
+        <span asp-validation-for="Details" class="text-danger"></span>
+    </div>
+
+    <hr />
+    <input type="submit" class="btn btn-primary" />
+</form>

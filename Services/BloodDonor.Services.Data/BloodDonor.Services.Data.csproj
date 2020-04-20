@@ -24,8 +24,4 @@
     <ProjectReference Include="..\BloodDonor.Services.Mapping\BloodDonor.Services.Mapping.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="PatientsServices\" />
-  </ItemGroup>
-
 </Project>

@@ -24,7 +24,7 @@
         [Required]
         public string BloodType { get; set; }
 
-        public bool HasBeenResponsed { get; set; }
+       // public bool HasBeenResponsed { get; set; }
 
         [Required]
         public string LocationId { get; set; }
@@ -37,6 +37,7 @@
         public virtual ApplicationUser User { get; set; }
 
         public virtual ICollection<Request> Requests { get; set; }
+
 
     }
 }

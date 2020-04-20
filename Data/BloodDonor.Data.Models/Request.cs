@@ -30,6 +30,8 @@
 
         public virtual Patient Patient { get; set; }
 
+        public virtual Response Response { get; set; }
+
     }
 
 }
