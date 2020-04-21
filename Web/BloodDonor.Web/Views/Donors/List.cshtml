@@ -1,0 +1,21 @@
+﻿@model BloodDonor.Web.ViewModels.Donors.DonorListViewModel
+
+<h1>List of Donors</h1>
+
+<div class="row">
+    @foreach (var donor in Model.Donors)
+    {
+        <div class="col-md-4 media">
+            <div class="media-body">
+                <h5 class="mt-0">
+                   
+                        @donor.FullName
+                    
+                </h5>
+                @donor.PhoneNumber
+                @donor.BloodType
+                @donor.LocationTownName
+            </div>
+        </div>
+    }
+</div>

@@ -59,5 +59,16 @@
             return this.Redirect("/Requests/List");
         }
 
+        [Authorize(Roles = "Administrator")]
+
+        public IActionResult List()
+        {
+            var viewModel = new DonorListViewModel
+            {
+                Donors = this.donorsService.GetAll<DonorRegisterInputModel>(),
+            };
+            return this.View(viewModel);
+        }
+
     }
 }

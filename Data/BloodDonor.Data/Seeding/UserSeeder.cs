@@ -6,31 +6,35 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace BloodDonor.Data.Seeding
 {
     public class UserSeeder : ISeeder
     {
-        private const string adminEmail = "admin@abv.bg";
-        private const string adminPass = "Admin123456Admin";
-        private const string adminRole = "Administrator";
+        private const string AdminEmail = "admin@abv.bg";
+        private const string AdminPass = "Admin123456Admin";
+        private const string AdminRole = "Administrator";
 
 
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
+            if (userManager.Users.FirstOrDefault(x => x.Email == AdminEmail) != null)
+            {
+                return;
+            }
             var user = new ApplicationUser
             {
-                UserName = adminEmail,
-                Email = adminEmail,
+                UserName = AdminEmail,
+                Email = AdminEmail,
             };
 
-            var result = await userManager.CreateAsync(user, adminPass);
+            var result = await userManager.CreateAsync(user, AdminPass);
 
 
-            await userManager.AddToRoleAsync(user, adminRole);
-            //    await dbContext.Categories.AddAsync(new Category
+            await userManager.AddToRoleAsync(user, AdminRole);
         }
     }
 }

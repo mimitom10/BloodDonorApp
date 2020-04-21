@@ -2,11 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
 
     using BloodDonor.Data.Common.Repositories;
     using BloodDonor.Data.Models;
+    using BloodDonor.Services.Mapping;
     using Microsoft.AspNetCore.Identity;
 
     public class DonorsService : IDonorsService
@@ -16,6 +18,14 @@
         public DonorsService(IDeletableEntityRepository<Donor> donorsRepository)
         {
             this.donorsRepository = donorsRepository;
+        }
+
+        public IEnumerable<T> GetAll<T>()
+        {
+            IQueryable<Donor> query =
+                 this.donorsRepository.All().OrderBy(x => x.BloodType).ThenBy(x => x.Location.TownName);
+
+            return query.To<T>().ToList();
         }
 
         public async Task<string> RegisterAsync(string fullName, string phoneNumber, string bloodType, string locationId, string userId)
