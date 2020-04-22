@@ -8,9 +8,6 @@
     public class RequestInputViewModel
     {
         [Required]
-        public string PatientId { get; set; }
-
-        [Required]
         [Range(1, 5)]
         public int Quantity { get; set; }
 
@@ -20,6 +17,5 @@
 
         [MaxLength(300)]
         public string PersonalMessage { get; set; }
-
     }
 }

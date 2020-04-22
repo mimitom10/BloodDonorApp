@@ -41,12 +41,22 @@
             return query.To<T>().ToList();
         }
 
-        public T SelectRequest<T>(string patientFullName)
+        //public T GetById<T>(int id)
+        //{
+        //    var post = this.postsRepository.All().Where(x => x.Id == id)
+        //        .To<T>().FirstOrDefault();
+        //    return post;
+      //  .Replace(" ", "-") == patientFullName.Replace(" ", "-")
+        //}
+        public T GetRequestById<T>(string id)
         {
             var request = this.requestsRepository.All()
-                .Where(x => x.Patient.FullName.Replace(" ", "-") == patientFullName.Replace(" ", "-"))
+                .Where(x => x.Id == id)
                 .To<T>().FirstOrDefault();
+
             return request;
         }
+
+
     }
 }

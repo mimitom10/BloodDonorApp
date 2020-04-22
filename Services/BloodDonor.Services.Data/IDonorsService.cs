@@ -5,6 +5,7 @@
 
     public interface IDonorsService
     {
+        bool IsRegisteredDonor(string userId);
         IEnumerable<T> GetAll<T>();
         Task<string> RegisterAsync(string fullName, string phoneNumber, string bloodType, string locationId, string userId);
 

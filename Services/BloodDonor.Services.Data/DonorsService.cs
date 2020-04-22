@@ -28,6 +28,21 @@
             return query.To<T>().ToList();
         }
 
+        public bool IsRegisteredDonor(string userId)
+        {
+            var patient = this.donorsRepository.All()
+                .Where(x => x.UserId == userId)
+                .ToList();
+            if (patient.Any())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public async Task<string> RegisterAsync(string fullName, string phoneNumber, string bloodType, string locationId, string userId)
         {
             var donor = new Donor

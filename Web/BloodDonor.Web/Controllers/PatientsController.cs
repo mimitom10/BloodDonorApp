@@ -31,6 +31,11 @@
         [Authorize]
         public IActionResult Register()
         {
+            var userId = this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (this.patientsService.IsRegisteredPatient(userId))
+            {
+                return this.Redirect("/Requests/Add");
+            }
             return this.View();
         }
 

@@ -31,6 +31,11 @@
         [Authorize]
         public IActionResult Register()
         {
+            var userId = this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (this.donorsService.IsRegisteredDonor(userId))
+            {
+                return this.Redirect("/Requests/List");
+            }
             return this.View();
         }
 

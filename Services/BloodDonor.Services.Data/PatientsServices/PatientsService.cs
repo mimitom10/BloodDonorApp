@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
 
@@ -30,6 +31,21 @@
             await this.patientsRepository.AddAsync(patient);
             await this.patientsRepository.SaveChangesAsync();
             return patient.Id;
+        }
+
+        public bool IsRegisteredPatient(string userId)
+        {
+            var patient = this.patientsRepository.All()
+                .Where(x => x.UserId == userId)
+                .ToList();
+            if(patient.Any())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

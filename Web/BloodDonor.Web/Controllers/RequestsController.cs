@@ -65,14 +65,15 @@
             return this.Redirect("/Requests/List");
         }
 
-        public IActionResult SingleRequest(string patientFullName)
+        public IActionResult ById(string Id)
         {
-            var viewModel =
-               this.requestsService.SelectRequest<RequestViewModel>(patientFullName);
+
+            var viewModel = this.requestsService.GetRequestById<RequestViewModel>(Id);
             if (viewModel == null)
             {
                 return this.NotFound();
             }
+
             return this.View(viewModel);
         }
     }
