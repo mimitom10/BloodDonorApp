@@ -33,10 +33,22 @@
 
         public IActionResult List()
         {
+                var viewModel = new RequestListViewModel
+                {
+                    Requests = this.requestsService.GetAll<RequestViewModel>(),
+                };
+
+            return this.View(viewModel);
+        }
+
+        [Authorize]
+        public IActionResult ListById(string id)
+        {
             var viewModel = new RequestListViewModel
             {
-                Requests = this.requestsService.GetAll<RequestViewModel>(),
+                Requests = this.requestsService.GetAllById<RequestViewModel>(id),
             };
+
             return this.View(viewModel);
         }
 

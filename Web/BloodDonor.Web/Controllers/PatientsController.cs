@@ -29,6 +29,18 @@
         }
 
         [Authorize]
+        public IActionResult Profile()
+        {
+            var userId = this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var viewModel = this.patientsService.GetPatientById<PatientRegisterInputModel>(userId);
+            if (!this.patientsService.IsRegisteredPatient(userId))
+            {
+                return this.Redirect("/Patients/Register");
+            }
+            return this.View(viewModel);
+        }
+
+        [Authorize]
         public IActionResult Register()
         {
             var userId = this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -59,7 +71,14 @@
             var userId = this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var locationId = location.Id;
             var patientId = await this.patientsService.RegisterAsync(input.FullName, input.PhoneNumber, input.BloodType, locationId, userId);
-            return this.Redirect("/");
+            return this.Redirect("/Requests/Add");
         }
+
+        public IActionResult Edit()
+        {
+            return this.View();
+        }
+       
+
     }
 }

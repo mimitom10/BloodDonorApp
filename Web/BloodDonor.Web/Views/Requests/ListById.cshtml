@@ -1,0 +1,25 @@
+﻿@model BloodDonor.Web.ViewModels.Requests.RequestListViewModel
+
+<h1>Add your Request</h1>
+
+@*<h4 class="media-heading"><a asp-controller="Posts" asp-action="ById" asp-route-id="@post.Id">@post.Title</a></h4>*@
+@*href="@request.Url">
+    <a asp-controller="Requests" asp-action="SingleRequest" asp-all-route-data="@request.PatientFullName">*@
+  @*<a asp-controller="Requests" asp-action="SingleRequest" asp-all-route="@request.PatientFullName">*@
+
+    <div class="row">
+        @foreach (var request in Model.Requests)
+        {
+            <div class="col-md-4 media">
+                <div class="media-body">
+                    <h5 class="mt-0">
+                        <a asp-controller="Requests" asp-action="ById" asp-route-id="@request.Id" >
+                            @request.PatientFullName
+                        </a>
+                    </h5>
+                    @request.PatientBloodType
+                    @request.PatientLocationTownName
+                </div>
+            </div>
+        }
+    </div>

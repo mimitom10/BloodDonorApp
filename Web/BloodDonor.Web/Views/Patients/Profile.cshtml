@@ -1,0 +1,44 @@
+﻿@model BloodDonor.Web.ViewModels.Patients.PatientRegisterInputModel
+
+
+<h1>Profile Page</h1>
+
+<hr />
+
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+            <div class="well profile">
+                <div class="col-sm-12">
+                    <div class="col-xs-12 col-sm-8">
+                        <h2>@Model.FullName</h2>
+                        <p><strong>Phone Number:  </strong>@Model.PhoneNumber</p>
+                        <p><strong>Blood Type: </strong>@Model.BloodType</p>
+                        <p><strong>Location: </strong>@Model.LocationTownName</p>
+                    </div>
+
+
+
+                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    </div>
+                   
+                </div>
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <a type="button" class="btn btn-success" asp-controller="Requests" asp-action="ListById" asp-route-id="@Model.UserId">My Requests</a>
+
+                </div>
+                <div class="btn-group" role="group" aria-label="Second group">
+                    <a type="button" class="btn btn-success" asp-controller="Requests" asp-action="Add">Add new Request</a>
+                </div>
+            </div>
+
+
+            <hr />
+        </div>
+                <a class="btn btn-danger btn-block" asp-controller="Patients" asp-action="Edit">Edit Profile</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

@@ -8,6 +8,7 @@
 
     using BloodDonor.Data.Common.Repositories;
     using BloodDonor.Data.Models;
+    using BloodDonor.Services.Mapping;
 
     public class PatientsService : IPatientsService
     {
@@ -46,6 +47,15 @@
             {
                 return false;
             }
+        }
+
+        public T GetPatientById<T>(string id)
+        {
+            var patient = this.patientsRepository.All()
+               .Where(x => x.User.Id == id)
+               .To<T>().FirstOrDefault();
+
+            return patient;
         }
     }
 }

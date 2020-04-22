@@ -41,13 +41,16 @@
             return query.To<T>().ToList();
         }
 
-        //public T GetById<T>(int id)
-        //{
-        //    var post = this.postsRepository.All().Where(x => x.Id == id)
-        //        .To<T>().FirstOrDefault();
-        //    return post;
-      //  .Replace(" ", "-") == patientFullName.Replace(" ", "-")
-        //}
+        public IEnumerable<T> GetAllById<T>(string id)
+        {
+            IQueryable<Request> query =
+                 this.requestsRepository.All()
+                 .Where(x => x.Patient.UserId == id)
+                 .OrderBy(x => x.Patient.FullName);
+
+            return query.To<T>().ToList();
+        }
+
         public T GetRequestById<T>(string id)
         {
             var request = this.requestsRepository.All()
