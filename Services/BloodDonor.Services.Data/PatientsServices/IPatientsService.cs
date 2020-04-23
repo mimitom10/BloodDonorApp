@@ -11,6 +11,10 @@
 
         Task<string> RegisterAsync(string fullName, string phoneNumber, string bloodType, string locationId, string userId);
 
+        Task EditAsync(string fullName, string phoneNumber, string bloodType, string locationId, string userId);
+
+        Task DeleteAsync(string userId);
+
         T GetPatientByUserId<T>(string userId);
     }
 }

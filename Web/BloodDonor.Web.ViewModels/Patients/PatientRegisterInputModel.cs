@@ -22,6 +22,8 @@
         [Required]
         public string BloodType { get; set; }
 
+        public string LocationId { get; set; }
+
         public string LocationTownName { get; set; }
     }
 }

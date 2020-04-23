@@ -35,20 +35,7 @@
             return request.Id;
         }
 
-        //public async Task DeleteAsync(string patientId, int quantity, string medicalCondition, string personalMessage)
-        //{
-        //    var request = new Request
-        //    {
-        //        PatientId = patientId,
-        //        Quantity = quantity,
-        //        MedicalCondition = medicalCondition,
-        //        PersonalMessage = personalMessage,
-        //    };
-
-        //     this.requestsRepository.HardDelete(request);
-
-        //    await this.requestsRepository.SaveChangesAsync();
-        //}
+       
 
         public IEnumerable<T> GetAll<T>()
         {

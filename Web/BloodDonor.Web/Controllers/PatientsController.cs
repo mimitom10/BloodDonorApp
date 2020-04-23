@@ -82,29 +82,38 @@
             return this.View();
         }
 
-        //[HttpPost]
-        //[Authorize]
-        //public async Task<IActionResult> Edit(PatientRegisterInputModel input)
-        //{
-        //    if (!this.ModelState.IsValid)
-        //    {
-        //        return this.View(input);
-        //    }
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Edit(PatientRegisterInputModel input)
+        {
+            //if (!this.ModelState.IsValid)
+            //{
+            //    return this.View(input);
+            //}
 
-        //    var location = new Location
-        //    {
-        //        TownName = input.LocationTownName,
-        //    };
+            //var location = new Location
+            //{
+            //    TownName = input.LocationTownName,
+            //};
 
-        //    await this.locationsRepository.AddAsync(location);
-        //    await this.locationsRepository.SaveChangesAsync();
+            var userId = this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            //var viewModel = this.patientsService.GetPatientByUserId<PatientRegisterInputModel>(userId);
 
-        //    var userId = this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        //    var locationId = location.Id;
+            //var locationToChange = this.locationsRepository.All()
+            //     .Where(x => x.Id == viewModel.LocationId)
+            //     .ToList().FirstOrDefault();
 
-        //    var patientId = await this.patientsService.RegisterAsync(input.FullName, input.PhoneNumber, input.BloodType, locationId, userId);
-        //    return this.Redirect("/Requests/Add");
+            //locationToChange.Id = location.Id;
+            //locationToChange.TownName = input.LocationTownName;
 
-        //}
+            //await this.locationsRepository.SaveChangesAsync();
+
+            //var locationId = locationToChange.Id;
+
+            await this.patientsService.DeleteAsync(userId);
+            //await this.patientsService.EditAsync(input.FullName, input.PhoneNumber, input.BloodType, locationId, userId);
+            return this.Redirect("/Patients/Profile");
+
+        }
     }
 }
