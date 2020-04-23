@@ -28,6 +28,15 @@
             return query.To<T>().ToList();
         }
 
+        public T GetDonorByUserId<T>(string userId)
+        {
+            var donor = this.donorsRepository.All()
+              .Where(x => x.User.Id == userId)
+              .To<T>().FirstOrDefault();
+
+            return donor;
+        }
+
         public bool IsRegisteredDonor(string userId)
         {
             var patient = this.donorsRepository.All()

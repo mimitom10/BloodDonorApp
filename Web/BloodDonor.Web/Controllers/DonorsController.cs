@@ -29,6 +29,18 @@
         }
 
         [Authorize]
+        public IActionResult Profile()
+        {
+            var userId = this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var viewModel = this.donorsService.GetDonorByUserId<DonorRegisterInputModel>(userId);
+            if (!this.donorsService.IsRegisteredDonor(userId))
+            {
+                return this.Redirect("/Donors/Register");
+            }
+            return this.View(viewModel);
+        }
+
+        [Authorize]
         public IActionResult Register()
         {
             var userId = this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;

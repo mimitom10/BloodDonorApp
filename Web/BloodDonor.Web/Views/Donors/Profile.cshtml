@@ -1,10 +1,7 @@
-﻿@model BloodDonor.Web.ViewModels.Patients.PatientRegisterInputModel
+﻿@model BloodDonor.Web.ViewModels.Donors.DonorRegisterInputModel
 
-
-<h1>Profile Page</h1>
-
-<hr />
-
+<h1>Donor's Profile Page</h1>
+<hr/>
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
     <div class="row">
@@ -19,15 +16,13 @@
                     </div>
                     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
 
-                        <div class="btn-group mr-2" role="group" aria-label="First group">
-                            <a type="button" class="btn btn-success" asp-controller="Requests" asp-action="ListById" asp-route-id="@Model.UserId">My Requests</a>
-                        </div>
+                        
                         <div class="btn-group" role="group" aria-label="Second group">
-                            <a type="button" class="btn btn-success" asp-controller="Requests" asp-action="Add">Add new Request</a>
+                            <a type="button" class="btn btn-success" asp-controller="Requests" asp-action="List">Requests</a>
                         </div>
                     </div>
                     <hr />
-                    <a class="btn btn-danger btn-block" asp-controller="Patients" asp-action="Edit">Edit Profile</a>
+                    <a class="btn btn-danger btn-block" asp-controller="Donors" asp-action="Edit">Edit Profile</a>
                 </div>
             </div>
         </div>
