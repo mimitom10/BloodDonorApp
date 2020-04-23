@@ -1,6 +1,7 @@
 ﻿namespace BloodDonor.Web.Controllers
 {
     using System.Linq;
+    using System.Security.Claims;
     using System.Threading.Tasks;
 
     using BloodDonor.Data.Common.Repositories;
@@ -11,17 +12,16 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
-    using System.Security.Claims;
-
     public class DonorsController : Controller
     {
         private readonly IDonorsService donorsService;
         private readonly IDeletableEntityRepository<Location> locationsRepository;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public DonorsController(IDonorsService donorsService,
-           IDeletableEntityRepository<Location> locationsRepository,
-           UserManager<ApplicationUser> userManage)
+        public DonorsController(
+            IDonorsService donorsService,
+            IDeletableEntityRepository<Location> locationsRepository,
+            UserManager<ApplicationUser> userManager)
         {
             this.donorsService = donorsService;
             this.locationsRepository = locationsRepository;
@@ -37,6 +37,7 @@
             {
                 return this.Redirect("/Donors/Register");
             }
+
             return this.View(viewModel);
         }
 
@@ -48,6 +49,7 @@
             {
                 return this.Redirect("/Requests/List");
             }
+
             return this.View();
         }
 
@@ -68,12 +70,19 @@
             await this.locationsRepository.AddAsync(location);
             await this.locationsRepository.SaveChangesAsync();
 
-            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userId = this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
             // var userId = this.userManager.GetUserId(this.User);
-            //this.User.Claims.FirstOrDefault().ToString();
+            // this.User.Claims.FirstOrDefault().ToString();
             var locationId = location.Id;
             var donorId = await this.donorsService.RegisterAsync(input.FullName, input.PhoneNumber, input.BloodType, locationId, userId);
             return this.Redirect("/Requests/List");
+        }
+
+        [Authorize]
+        public IActionResult Edit()
+        {
+            return this.View();
         }
 
         [Authorize(Roles = "Administrator")]
@@ -86,6 +95,5 @@
             };
             return this.View(viewModel);
         }
-
     }
 }

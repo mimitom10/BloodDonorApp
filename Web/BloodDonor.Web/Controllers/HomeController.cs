@@ -13,6 +13,11 @@
             return this.View();
         }
 
+        public IActionResult Coronavirus()
+        {
+            return this.View();
+        }
+
         public IActionResult Privacy()
         {
             return this.View();

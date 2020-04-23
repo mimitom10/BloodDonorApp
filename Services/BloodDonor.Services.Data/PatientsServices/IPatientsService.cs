@@ -9,11 +9,8 @@
     {
         bool IsRegisteredPatient(string userId);
 
-        
-
         Task<string> RegisterAsync(string fullName, string phoneNumber, string bloodType, string locationId, string userId);
 
         T GetPatientByUserId<T>(string userId);
-
     }
 }

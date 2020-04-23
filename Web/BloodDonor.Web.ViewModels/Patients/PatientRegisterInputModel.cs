@@ -12,7 +12,6 @@
     {
         public string UserId { get; set; }
 
-
         [Required]
         [MaxLength(50)]
         public string FullName { get; set; }
@@ -24,6 +23,5 @@
         public string BloodType { get; set; }
 
         public string LocationTownName { get; set; }
-
     }
 }

@@ -14,8 +14,5 @@ namespace BloodDonor.Web.ViewModels.Responses
         public bool IsAnonymous { get; set; }
 
         public bool IsConfirmed { get; set; }
-
-        
-
     }
 }

@@ -10,7 +10,6 @@ namespace BloodDonor.Web.Controllers
     {
         public LocationsController()
         {
-
         }
     }
 }

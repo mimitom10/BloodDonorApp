@@ -13,9 +13,7 @@ namespace BloodDonor.Web.Controllers
     {
         public ResponsesController()
         {
-
         }
-
 
         public IActionResult Add()
         {

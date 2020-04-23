@@ -11,12 +11,9 @@
 
         IEnumerable<T> GetAllById<T>(string id);
 
-
         Task<string> AddAsync(string patientId, int quantity, string medicalCondition, string personalMessage);
 
       //  Task DeleteAsync(string patientId, int quantity, string medicalCondition, string personalMessage);
-
-
 
         T GetRequestById<T>(string id);
 

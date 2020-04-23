@@ -16,7 +16,6 @@ namespace BloodDonor.Data.Seeding
         private const string AdminPass = "Admin123456Admin";
         private const string AdminRole = "Administrator";
 
-
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
@@ -25,6 +24,7 @@ namespace BloodDonor.Data.Seeding
             {
                 return;
             }
+
             var user = new ApplicationUser
             {
                 UserName = AdminEmail,
@@ -32,7 +32,6 @@ namespace BloodDonor.Data.Seeding
             };
 
             var result = await userManager.CreateAsync(user, AdminPass);
-
 
             await userManager.AddToRoleAsync(user, AdminRole);
         }

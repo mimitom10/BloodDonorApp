@@ -29,9 +29,8 @@
                 PersonalMessage = personalMessage,
             };
 
-           
             await this.requestsRepository.AddAsync(request);
-            
+
             await this.requestsRepository.SaveChangesAsync();
             return request.Id;
         }
@@ -45,7 +44,6 @@
         //        MedicalCondition = medicalCondition,
         //        PersonalMessage = personalMessage,
         //    };
-
 
         //     this.requestsRepository.HardDelete(request);
 

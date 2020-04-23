@@ -37,6 +37,7 @@
             {
                 return this.Redirect("/Patients/Register");
             }
+
             return this.View(viewModel);
         }
 
@@ -48,6 +49,7 @@
             {
                 return this.Redirect("/Requests/Add");
             }
+
             return this.View();
         }
 
@@ -89,14 +91,11 @@
         //        return this.View(input);
         //    }
 
-             
-
         //    var location = new Location
         //    {
         //        TownName = input.LocationTownName,
         //    };
 
-           
         //    await this.locationsRepository.AddAsync(location);
         //    await this.locationsRepository.SaveChangesAsync();
 
@@ -106,11 +105,6 @@
         //    var patientId = await this.patientsService.RegisterAsync(input.FullName, input.PhoneNumber, input.BloodType, locationId, userId);
         //    return this.Redirect("/Requests/Add");
 
-
         //}
-
-
-       
-
     }
 }

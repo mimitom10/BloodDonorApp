@@ -11,6 +11,8 @@
     {
         public string Id { get; set; }
 
+        public string PatientUserId { get; set; }
+
         public string PatientFullName { get; set; }
 
         public string PatientBloodType { get; set; }

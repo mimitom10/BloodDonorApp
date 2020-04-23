@@ -18,7 +18,6 @@ namespace BloodDonor.Data.Models
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
             this.Notifications = new HashSet<Notification>();
-
         }
 
         // Audit info
@@ -49,6 +48,5 @@ namespace BloodDonor.Data.Models
         public virtual Donor Donor { get; set; }
 
         public virtual Patient Patient { get; set; }
-
     }
 }

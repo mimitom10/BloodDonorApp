@@ -22,6 +22,5 @@
         public string LocationTownName { get; set; }
 
         // public bool HasCovidAntiBodies { get; set; }
-
     }
 }

@@ -19,7 +19,5 @@
 
         [MaxLength(300)]
         public string PersonalMessage { get; set; }
-
-        
     }
 }

@@ -20,7 +20,5 @@
         public virtual ICollection<Donor> Donors { get; set; }
 
         public virtual ICollection<Patient> Patients { get; set; }
-
     }
-
 }

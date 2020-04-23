@@ -19,13 +19,24 @@
                         <p><strong>Location: </strong>@Model.PatientLocationTownName</p>
                         <p><strong>Personal Message: </strong> @Model.PersonalMessage </p>
                     </div>
-                    
-                </div>
-                      <a class="btn btn-danger btn-block" asp-controller="Responses" asp-action="Add">Response to this Request</a>
+
+                    @if (this.User.Claims.FirstOrDefault().ToString() == Model.PatientUserId)
+                    {
+
+                        <a class="btn btn-danger btn-block" asp-controller="Responses" asp-action="Add">Delete this Request</a>
+
+                    }
+                    else
+                    {
+
+
+                        <a class="btn btn-danger btn-block" asp-controller="Responses" asp-action="Add">Response to this Request</a>
+
+                    }
+
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
