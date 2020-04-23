@@ -1,7 +1,6 @@
 ﻿namespace BloodDonor.Web.Controllers
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -33,10 +32,10 @@
 
         public IActionResult List()
         {
-                var viewModel = new RequestListViewModel
-                {
-                    Requests = this.requestsService.GetAll<RequestViewModel>(),
-                };
+            var viewModel = new RequestListViewModel
+            {
+                Requests = this.requestsService.GetAll<RequestViewModel>(),
+            };
 
             return this.View(viewModel);
         }
@@ -63,6 +62,7 @@
 
         public async Task<IActionResult> Add(RequestInputViewModel input)
         {
+
             if (!this.ModelState.IsValid)
             {
                 return this.View(input);
@@ -71,16 +71,20 @@
             var userId = this.userManager.GetUserId(this.User);
             var patient = this.patientsRepository.All().Where(x => x.UserId == userId).FirstOrDefault();
             var patientId = patient.Id;
+            if (this.requestsService.HasReachedMaxRequests(userId))
+            {
+                return this.Redirect("/Requests/List");
+            }
 
             var requestId = await this.requestsService.AddAsync(patientId, input.Quantity, input.MedicalCondition, input.PersonalMessage);
 
             return this.Redirect("/Requests/List");
         }
 
-        public IActionResult ById(string Id)
+        public IActionResult ById(string id)
         {
 
-            var viewModel = this.requestsService.GetRequestById<RequestViewModel>(Id);
+            var viewModel = this.requestsService.GetRequestById<RequestViewModel>(id);
             if (viewModel == null)
             {
                 return this.NotFound();

@@ -1,11 +1,13 @@
 ﻿namespace BloodDonor.Web.ViewModels.Requests
 {
+    using BloodDonor.Data.Models;
+    using BloodDonor.Services.Mapping;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Text;
 
-    public class RequestInputViewModel
+    public class RequestInputViewModel : IMapFrom<Request>
     {
         [Required]
         [Range(1, 5)]
@@ -17,5 +19,7 @@
 
         [MaxLength(300)]
         public string PersonalMessage { get; set; }
+
+        
     }
 }

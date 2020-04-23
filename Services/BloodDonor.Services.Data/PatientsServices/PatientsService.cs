@@ -49,13 +49,14 @@
             }
         }
 
-        public T GetPatientById<T>(string id)
+        public T GetPatientByUserId<T>(string userId)
         {
             var patient = this.patientsRepository.All()
-               .Where(x => x.User.Id == id)
+               .Where(x => x.User.Id == userId)
                .To<T>().FirstOrDefault();
 
             return patient;
         }
+      
     }
 }

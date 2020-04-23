@@ -28,10 +28,29 @@
                 MedicalCondition = medicalCondition,
                 PersonalMessage = personalMessage,
             };
+
+           
             await this.requestsRepository.AddAsync(request);
+            
             await this.requestsRepository.SaveChangesAsync();
             return request.Id;
         }
+
+        //public async Task DeleteAsync(string patientId, int quantity, string medicalCondition, string personalMessage)
+        //{
+        //    var request = new Request
+        //    {
+        //        PatientId = patientId,
+        //        Quantity = quantity,
+        //        MedicalCondition = medicalCondition,
+        //        PersonalMessage = personalMessage,
+        //    };
+
+
+        //     this.requestsRepository.HardDelete(request);
+
+        //    await this.requestsRepository.SaveChangesAsync();
+        //}
 
         public IEnumerable<T> GetAll<T>()
         {
@@ -60,6 +79,19 @@
             return request;
         }
 
-
+        public bool HasReachedMaxRequests(string userId)
+        {
+            var requests = this.requestsRepository.All()
+                .Where(x => x.Patient.UserId == userId)
+                .ToList();
+            if(requests.Count >= 3)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

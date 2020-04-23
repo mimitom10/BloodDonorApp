@@ -10,6 +10,7 @@
     public class RequestViewModel : IMapFrom<Request>
     {
         public string Id { get; set; }
+
         public string PatientFullName { get; set; }
 
         public string PatientBloodType { get; set; }
@@ -20,8 +21,6 @@
 
         public string MedicalCondition { get; set; }
 
-        public string PeronalMessage { get; set; }
-
-       // public string Url => $"/Requests/{this.PatientFullName.Replace(' ', '-')}";
+        public string PersonalMessage { get; set; }
     }
 }

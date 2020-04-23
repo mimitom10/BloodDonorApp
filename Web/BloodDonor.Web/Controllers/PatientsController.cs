@@ -32,7 +32,7 @@
         public IActionResult Profile()
         {
             var userId = this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var viewModel = this.patientsService.GetPatientById<PatientRegisterInputModel>(userId);
+            var viewModel = this.patientsService.GetPatientByUserId<PatientRegisterInputModel>(userId);
             if (!this.patientsService.IsRegisteredPatient(userId))
             {
                 return this.Redirect("/Patients/Register");
@@ -74,10 +74,42 @@
             return this.Redirect("/Requests/Add");
         }
 
+        [Authorize]
         public IActionResult Edit()
         {
             return this.View();
         }
+
+        //[HttpPost]
+        //[Authorize]
+        //public async Task<IActionResult> Edit(PatientRegisterInputModel input)
+        //{
+        //    if (!this.ModelState.IsValid)
+        //    {
+        //        return this.View(input);
+        //    }
+
+             
+
+        //    var location = new Location
+        //    {
+        //        TownName = input.LocationTownName,
+        //    };
+
+           
+        //    await this.locationsRepository.AddAsync(location);
+        //    await this.locationsRepository.SaveChangesAsync();
+
+        //    var userId = this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        //    var locationId = location.Id;
+
+        //    var patientId = await this.patientsService.RegisterAsync(input.FullName, input.PhoneNumber, input.BloodType, locationId, userId);
+        //    return this.Redirect("/Requests/Add");
+
+
+        //}
+
+
        
 
     }
