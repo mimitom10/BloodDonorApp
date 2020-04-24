@@ -11,6 +11,7 @@
     public class PatientRegisterInputModel : IMapFrom<Patient>
     {
         public string Id { get; set; }
+
         public string UserId { get; set; }
 
         [Required]

@@ -1,9 +1,6 @@
 ﻿namespace BloodDonor.Services.Data
 {
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
 
     using BloodDonor.Data.Common.Repositories;
@@ -39,7 +36,7 @@
             var patient = this.patientsRepository.All()
                 .Where(x => x.UserId == userId)
                 .ToList();
-            if(patient.Any())
+            if (patient.Any())
             {
                 return true;
             }
@@ -56,44 +53,6 @@
                .To<T>().FirstOrDefault();
 
             return patient;
-        }
-
-        public async Task EditAsync(string fullName, string phoneNumber, string bloodType, string locationId, string userId)
-        {
-            var patientToEdit = this.patientsRepository.All()
-               .Where(x => x.User.Id == userId)
-               .ToList().FirstOrDefault();
-
-
-            //patientToEdit.FullName = fullName;
-            //patientToEdit.PhoneNumber = phoneNumber;
-            //patientToEdit.BloodType = bloodType;
-            //patientToEdit.LocationId = locationId;
-            //// patientToEdit.UserId = userId;
-
-
-
-            var editedPatient = new Patient
-            {
-                FullName = fullName,
-                PhoneNumber = phoneNumber,
-                BloodType = bloodType,
-                LocationId = locationId,
-                UserId = userId,
-            };
-
-            
-        }
-
-        public async Task DeleteAsync(string userId)
-        {
-            var patientToDelete = this.patientsRepository.All()
-                 .Where(x => x.User.Id == userId)
-               .ToList().FirstOrDefault();
-
-             this.patientsRepository.Delete(patientToDelete);
-
-            await this.patientsRepository.SaveChangesAsync();
         }
     }
 }

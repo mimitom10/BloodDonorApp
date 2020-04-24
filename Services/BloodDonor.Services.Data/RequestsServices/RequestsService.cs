@@ -35,7 +35,7 @@
             return request.Id;
         }
 
-       
+
 
         public IEnumerable<T> GetAll<T>()
         {
@@ -50,7 +50,7 @@
             IQueryable<Request> query =
                  this.requestsRepository.All()
                  .Where(x => x.Patient.UserId == id)
-                 .OrderBy(x => x.Patient.FullName);
+                 .OrderBy(x => x.CreatedOn);
 
             return query.To<T>().ToList();
         }
@@ -69,7 +69,7 @@
             var requests = this.requestsRepository.All()
                 .Where(x => x.Patient.UserId == userId)
                 .ToList();
-            if(requests.Count >= 3)
+            if (requests.Count >= 3)
             {
                 return true;
             }

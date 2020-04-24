@@ -13,6 +13,8 @@
 
         public string PatientUserId { get; set; }
 
+        public ApplicationUser PatientUser { get; set; }
+
         public string PatientFullName { get; set; }
 
         public string PatientBloodType { get; set; }

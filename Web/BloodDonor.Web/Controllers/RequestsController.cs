@@ -43,12 +43,24 @@
         [Authorize]
         public IActionResult ListById(string id)
         {
-            var viewModel = new RequestListViewModel
-            {
-                Requests = this.requestsService.GetAllById<RequestViewModel>(id),
-            };
+            var requestUser = requestsService.GetRequestById<RequestViewModel>(id);
+            var currentUserId = this.userManager.GetUserId(this.User);
 
-            return this.View(viewModel);
+            if (currentUserId == requestUser.Id)
+            {
+                var viewModel = new RequestListViewModel
+                {
+                    Requests = this.requestsService.GetAllById<RequestViewModel>(id),
+                };
+
+                return this.View(viewModel);
+
+            }
+            else
+            {
+                return this.Redirect("/Requests/List");
+
+            }
         }
 
         [Authorize]
@@ -83,7 +95,6 @@
 
         public IActionResult ById(string id)
         {
-
             var viewModel = this.requestsService.GetRequestById<RequestViewModel>(id);
             if (viewModel == null)
             {
@@ -92,5 +103,7 @@
 
             return this.View(viewModel);
         }
+
+
     }
 }

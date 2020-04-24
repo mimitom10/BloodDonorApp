@@ -1,5 +1,10 @@
 ﻿@model BloodDonor.Web.ViewModels.Requests.RequestViewModel
 
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+
+
+
 <h1>@Model.PatientFullName needs your help!</h1>
 
 <hr />
@@ -19,21 +24,9 @@
                         <p><strong>Location: </strong>@Model.PatientLocationTownName</p>
                         <p><strong>Personal Message: </strong> @Model.PersonalMessage </p>
                     </div>
-
-                    @if (this.User.Claims.FirstOrDefault().ToString() == Model.PatientUserId)
-                    {
-
                         <a class="btn btn-danger btn-block" asp-controller="Responses" asp-action="Add">Delete this Request</a>
-
-                    }
-                    else
-                    {
-
-
+                    <hr/>
                         <a class="btn btn-danger btn-block" asp-controller="Responses" asp-action="Add">Response to this Request</a>
-
-                    }
-
                 </div>
             </div>
         </div>
