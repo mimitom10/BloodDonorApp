@@ -13,6 +13,8 @@
 
         Task<string> AddAsync(string patientId, int quantity, string medicalCondition, string personalMessage);
 
+        Task DeleteAsync(string id);
+
 
 
         T GetRequestById<T>(string id);

@@ -9,6 +9,7 @@
     using BloodDonor.Data.Common.Repositories;
     using BloodDonor.Data.Models;
     using BloodDonor.Services.Mapping;
+    using BloodDonor.Web.ViewModels.Requests;
 
     public class RequestsService : IRequestsService
     {
@@ -35,7 +36,13 @@
             return request.Id;
         }
 
-
+        public async Task DeleteAsync(string id)
+        {
+            var request = this.requestsRepository.All()
+                .Where(x => x.Id == id).FirstOrDefault();
+            this.requestsRepository.Delete(request);
+            await this.requestsRepository.SaveChangesAsync();
+        }
 
         public IEnumerable<T> GetAll<T>()
         {

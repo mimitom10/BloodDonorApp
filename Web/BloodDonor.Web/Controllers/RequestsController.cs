@@ -43,23 +43,19 @@
         [Authorize]
         public IActionResult ListById(string id)
         {
-            var requestUser = requestsService.GetRequestById<RequestViewModel>(id);
             var currentUserId = this.userManager.GetUserId(this.User);
 
-            if (currentUserId == requestUser.Id)
+            if (currentUserId == id)
             {
                 var viewModel = new RequestListViewModel
                 {
                     Requests = this.requestsService.GetAllById<RequestViewModel>(id),
                 };
-
                 return this.View(viewModel);
-
             }
             else
             {
                 return this.Redirect("/Requests/List");
-
             }
         }
 
@@ -91,6 +87,34 @@
             var requestId = await this.requestsService.AddAsync(patientId, input.Quantity, input.MedicalCondition, input.PersonalMessage);
 
             return this.Redirect("/Requests/List");
+        }
+
+        [Authorize]
+        public IActionResult Delete(string id)
+        {
+            var currentUserId = this.userManager.GetUserId(this.User);
+            var patient = this.patientsRepository.All()
+                .Where(x => x.Requests.FirstOrDefault(r => r.Id == id).Id == id)
+                .FirstOrDefault();
+            var requestUserId = this.requestsService.GetRequestById<RequestViewModel>(id);
+            if (currentUserId == patient.UserId)
+            {
+                return this.View();
+            }
+            else
+            {
+                return this.Redirect("/Requests/List");
+            }
+        }
+
+
+        [HttpPost]
+        [Authorize]
+        [ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(string id)
+        {
+           await this.requestsService.DeleteAsync(id);
+            return this.Redirect("/Requests/ListById");
         }
 
         public IActionResult ById(string id)
