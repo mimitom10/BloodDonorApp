@@ -19,7 +19,6 @@ namespace BloodDonor.Web.Controllers
         private readonly IDeletableEntityRepository<Donor> donorsRepository;
         private readonly UserManager<ApplicationUser> userManager;
 
-
         public ResponsesController(
             IResponsesService responsesService,
             IDeletableEntityRepository<Donor> donorsRepository,

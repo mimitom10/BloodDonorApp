@@ -79,7 +79,6 @@
             return this.Redirect("/Requests/List");
         }
 
-
         [Authorize]
         public IActionResult Heroes()
         {
