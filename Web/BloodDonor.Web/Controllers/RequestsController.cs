@@ -107,14 +107,13 @@
             }
         }
 
-
         [HttpPost]
         [Authorize]
         [ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
            await this.requestsService.DeleteAsync(id);
-            return this.Redirect("/Requests/ListById");
+           return this.Redirect("/Requests/ListById");
         }
 
         public IActionResult ById(string id)
@@ -127,7 +126,6 @@
 
             return this.View(viewModel);
         }
-
 
     }
 }

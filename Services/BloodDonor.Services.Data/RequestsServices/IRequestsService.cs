@@ -15,8 +15,6 @@
 
         Task DeleteAsync(string id);
 
-
-
         T GetRequestById<T>(string id);
 
         bool HasReachedMaxRequests(string userId);
