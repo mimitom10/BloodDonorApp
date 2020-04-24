@@ -26,6 +26,8 @@
 
         public DbSet<Setting> Settings { get; set; }
 
+        public DbSet<BloodLab> BloodLabs { get; set; }
+
         public DbSet<Donor> Donors { get; set; }
 
         public DbSet<Location> Locations { get; set; }
