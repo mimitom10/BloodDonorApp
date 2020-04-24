@@ -79,10 +79,15 @@
             return this.Redirect("/Requests/List");
         }
 
+
         [Authorize]
-        public IActionResult Edit()
+        public IActionResult Heroes()
         {
-            return this.View();
+            var viewModel = new DonorListViewModel
+            {
+                Donors = this.donorsService.GetDonorsWithOpenDonations<DonorRegisterInputModel>(),
+            };
+            return this.View(viewModel);
         }
 
         [Authorize(Roles = "Administrator")]

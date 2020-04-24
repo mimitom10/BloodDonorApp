@@ -18,19 +18,17 @@
         private readonly IPatientsService patientsService;
         private readonly IDeletableEntityRepository<Location> locationsRepository;
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly ApplicationDbContext db;
 
         public PatientsController(
             IPatientsService patientsService,
             IDeletableEntityRepository<Location> locationsRepository,
             IDeletableEntityRepository<Patient> patientsRepository,
-            UserManager<ApplicationUser> userManager,
-            ApplicationDbContext db)
+            UserManager<ApplicationUser> userManager
+           )
         {
             this.patientsService = patientsService;
             this.locationsRepository = locationsRepository;
             this.userManager = userManager;
-            this.db = db;
         }
 
         [Authorize]

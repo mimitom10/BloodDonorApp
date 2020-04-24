@@ -37,6 +37,14 @@
             return donor;
         }
 
+        public IEnumerable<T> GetDonorsWithOpenDonations<T>()
+        {
+            IQueryable<Donor> query =
+                 this.donorsRepository.All()
+                 .Where(x => x.Responses.Any(r => r.IsAnonymous == false));
+            return query.To<T>().ToList();
+        }
+
         public bool IsRegisteredDonor(string userId)
         {
             var patient = this.donorsRepository.All()

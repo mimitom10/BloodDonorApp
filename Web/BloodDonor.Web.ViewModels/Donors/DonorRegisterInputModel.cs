@@ -21,6 +21,8 @@
 
         public string LocationTownName { get; set; }
 
+        public int ResponsesCount { get; set; }
+
         // public bool HasCovidAntiBodies { get; set; }
     }
 }

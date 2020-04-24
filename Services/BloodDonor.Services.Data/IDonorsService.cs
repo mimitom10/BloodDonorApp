@@ -9,6 +9,8 @@
 
         IEnumerable<T> GetAll<T>();
 
+        IEnumerable<T> GetDonorsWithOpenDonations<T>();
+
         Task<string> RegisterAsync(string fullName, string phoneNumber, string bloodType, string locationId, string userId);
 
         T GetDonorByUserId<T>(string userId);

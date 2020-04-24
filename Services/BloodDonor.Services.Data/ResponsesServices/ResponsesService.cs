@@ -1,13 +1,13 @@
-﻿using BloodDonor.Data.Common.Repositories;
-using BloodDonor.Data.Models;
-
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BloodDonor.Services.Data.ResponsesServices
+﻿namespace BloodDonor.Services.Data.ResponsesServices
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    using BloodDonor.Data.Common.Repositories;
+    using BloodDonor.Data.Models;
+
     public class ResponsesService : IResponsesService
     {
         private readonly IDeletableEntityRepository<Response> responsesRepository;

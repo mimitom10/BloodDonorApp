@@ -7,6 +7,7 @@ namespace BloodDonor.Web.ViewModels.Responses
 {
     public class ResponseInputViewModel
     {
+        public string RequestId { get; set; }
         public string Details { get; set; }
 
         [Required]

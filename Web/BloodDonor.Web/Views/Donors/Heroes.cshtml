@@ -1,0 +1,19 @@
+﻿@model BloodDonor.Web.ViewModels.Donors.DonorListViewModel
+
+<h1>List of our Heroes with the most donations</h1>
+
+<div class="row">
+    @foreach (var donor in Model.Donors)
+    {
+        <div class="col-md-4 media">
+            <div class="media-body">
+                <h5 class="mt-0">
+
+                    @donor.FullName
+
+                </h5>
+                @donor.ResponsesCount
+            </div>
+        </div>
+    }
+</div>
