@@ -6,7 +6,7 @@
 
     using BloodDonor.Data.Common.Repositories;
     using BloodDonor.Data.Models;
-    using BloodDonor.Services.Data;
+    using BloodDonor.Services.Data.DonorsServices;
     using BloodDonor.Web.ViewModels.Donors;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
@@ -75,7 +75,7 @@
             // var userId = this.userManager.GetUserId(this.User);
             // this.User.Claims.FirstOrDefault().ToString();
             var locationId = location.Id;
-            var donorId = await this.donorsService.RegisterAsync(input.FullName, input.PhoneNumber, input.BloodType, locationId, userId);
+            await this.donorsService.RegisterAsync(input.FullName, input.PhoneNumber, input.BloodType, locationId, userId);
             return this.Redirect("/Requests/List");
         }
 

@@ -17,7 +17,7 @@
             this.responsesRepository = responsesRepository;
         }
 
-        public async Task<string> AddAsync(string details, bool isAnonymous, string donorId, string requestId)
+        public async Task AddAsync(string details, bool isAnonymous, string donorId, string requestId)
         {
             var response = new Response
             {
@@ -28,7 +28,6 @@
             };
             await this.responsesRepository.AddAsync(response);
             await this.responsesRepository.SaveChangesAsync();
-            return response.Id;
         }
     }
 }

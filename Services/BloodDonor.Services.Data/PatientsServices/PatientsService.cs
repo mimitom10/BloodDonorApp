@@ -1,4 +1,4 @@
-﻿namespace BloodDonor.Services.Data
+﻿namespace BloodDonor.Services.Data.PatientsServices
 {
     using System.Linq;
     using System.Threading.Tasks;
@@ -16,7 +16,7 @@
             this.patientsRepository = patientsRepository;
         }
 
-        public async Task<string> RegisterAsync(string fullName, string phoneNumber, string bloodType, string locationId, string userId)
+        public async Task RegisterAsync(string fullName, string phoneNumber, string bloodType, string locationId, string userId)
         {
             var patient = new Patient
             {
@@ -28,7 +28,6 @@
             };
             await this.patientsRepository.AddAsync(patient);
             await this.patientsRepository.SaveChangesAsync();
-            return patient.Id;
         }
 
         public bool IsRegisteredPatient(string userId)

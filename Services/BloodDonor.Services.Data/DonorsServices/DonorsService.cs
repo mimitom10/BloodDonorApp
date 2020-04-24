@@ -1,4 +1,4 @@
-﻿namespace BloodDonor.Services.Data
+﻿namespace BloodDonor.Services.Data.DonorsServices
 {
     using System;
     using System.Collections.Generic;
@@ -60,7 +60,7 @@
             }
         }
 
-        public async Task<string> RegisterAsync(string fullName, string phoneNumber, string bloodType, string locationId, string userId)
+        public async Task RegisterAsync(string fullName, string phoneNumber, string bloodType, string locationId, string userId)
         {
             var donor = new Donor
             {
@@ -72,7 +72,6 @@
             };
             await this.donorsRepository.AddAsync(donor);
             await this.donorsRepository.SaveChangesAsync();
-            return donor.Id;
         }
     }
 }

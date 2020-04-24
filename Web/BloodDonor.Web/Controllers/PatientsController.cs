@@ -1,13 +1,12 @@
 ﻿namespace BloodDonor.Web.Controllers
 {
-    using System.Collections.Generic;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
     using BloodDonor.Data;
     using BloodDonor.Data.Common.Repositories;
     using BloodDonor.Data.Models;
-    using BloodDonor.Services.Data;
+    using BloodDonor.Services.Data.PatientsServices;
     using BloodDonor.Web.ViewModels.Patients;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
@@ -75,7 +74,7 @@
 
             var userId = this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var locationId = location.Id;
-            var patientId = await this.patientsService.RegisterAsync(input.FullName, input.PhoneNumber, input.BloodType, locationId, userId);
+            await this.patientsService.RegisterAsync(input.FullName, input.PhoneNumber, input.BloodType, locationId, userId);
             return this.Redirect("/Requests/Add");
         }
     }

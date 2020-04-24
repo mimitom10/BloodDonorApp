@@ -9,6 +9,8 @@
     using BloodDonor.Data.Repositories;
     using BloodDonor.Data.Seeding;
     using BloodDonor.Services.Data;
+    using BloodDonor.Services.Data.DonorsServices;
+    using BloodDonor.Services.Data.PatientsServices;
     using BloodDonor.Services.Data.RequestsServices;
     using BloodDonor.Services.Data.ResponsesServices;
     using BloodDonor.Services.Mapping;

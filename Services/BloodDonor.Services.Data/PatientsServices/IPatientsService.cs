@@ -1,4 +1,4 @@
-﻿namespace BloodDonor.Services.Data
+﻿namespace BloodDonor.Services.Data.PatientsServices
 {
     using System.Threading.Tasks;
 
@@ -6,7 +6,7 @@
     {
         bool IsRegisteredPatient(string userId);
 
-        Task<string> RegisterAsync(string fullName, string phoneNumber, string bloodType, string locationId, string userId);
+        Task RegisterAsync(string fullName, string phoneNumber, string bloodType, string locationId, string userId);
 
         T GetPatientByUserId<T>(string userId);
     }

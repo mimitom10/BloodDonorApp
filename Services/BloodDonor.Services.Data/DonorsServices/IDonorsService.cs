@@ -1,4 +1,4 @@
-﻿namespace BloodDonor.Services.Data
+﻿namespace BloodDonor.Services.Data.DonorsServices
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -11,7 +11,7 @@
 
         IEnumerable<T> GetDonorsWithOpenDonations<T>();
 
-        Task<string> RegisterAsync(string fullName, string phoneNumber, string bloodType, string locationId, string userId);
+        Task RegisterAsync(string fullName, string phoneNumber, string bloodType, string locationId, string userId);
 
         T GetDonorByUserId<T>(string userId);
     }

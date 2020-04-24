@@ -20,7 +20,7 @@
             this.requestsRepository = requestsRepository;
         }
 
-        public async Task<string> AddAsync(string patientId, int quantity, string medicalCondition, string personalMessage)
+        public async Task AddAsync(string patientId, int quantity, string medicalCondition, string personalMessage)
         {
             var request = new Request
             {
@@ -33,7 +33,6 @@
             await this.requestsRepository.AddAsync(request);
 
             await this.requestsRepository.SaveChangesAsync();
-            return request.Id;
         }
 
         public async Task DeleteAsync(string id)

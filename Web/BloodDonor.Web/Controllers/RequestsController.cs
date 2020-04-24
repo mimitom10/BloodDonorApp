@@ -84,7 +84,7 @@
                 return this.Redirect("/Requests/List");
             }
 
-            var requestId = await this.requestsService.AddAsync(patientId, input.Quantity, input.MedicalCondition, input.PersonalMessage);
+            await this.requestsService.AddAsync(patientId, input.Quantity, input.MedicalCondition, input.PersonalMessage);
 
             return this.Redirect("/Requests/List");
         }

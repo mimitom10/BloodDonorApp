@@ -7,6 +7,6 @@ namespace BloodDonor.Services.Data.ResponsesServices
 {
     public interface IResponsesService
     {
-        Task<string> AddAsync(string details, bool isAnonymous, string donorId, string requestId);
+        Task AddAsync(string details, bool isAnonymous, string donorId, string requestId);
     }
 }
