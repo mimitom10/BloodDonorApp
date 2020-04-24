@@ -5,7 +5,7 @@
     using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
-
+    using BloodDonor.Data;
     using BloodDonor.Data.Common.Repositories;
     using BloodDonor.Data.Models;
     using BloodDonor.Services.Data;
@@ -13,19 +13,28 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
+    using Microsoft.EntityFrameworkCore;
 
     public class PatientsController : Controller
     {
         private readonly IPatientsService patientsService;
         private readonly IDeletableEntityRepository<Location> locationsRepository;
+        private readonly IDeletableEntityRepository<Patient> patientsRepository;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly ApplicationDbContext db;
 
-        public PatientsController(IPatientsService patientsService, IDeletableEntityRepository<Location> locationsRepository,
-            UserManager<ApplicationUser> userManager)
+        public PatientsController(IPatientsService patientsService,
+            IDeletableEntityRepository<Location> locationsRepository,
+            IDeletableEntityRepository<Patient> patientsRepository,
+            UserManager<ApplicationUser> userManager,
+            ApplicationDbContext db)
         {
             this.patientsService = patientsService;
             this.locationsRepository = locationsRepository;
+            this.patientsRepository = patientsRepository;
             this.userManager = userManager;
+            this.db = db;
         }
 
         [Authorize]
@@ -77,43 +86,54 @@
         }
 
         [Authorize]
-        public IActionResult Edit()
+        public IActionResult Edit(string id)
         {
-            return this.View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var viewModel = patientsService.GetPatientByUserId<PatientRegisterInputModel>(id);
+            if (viewModel == null)
+            {
+                return NotFound();
+            }
+            return this.View(viewModel);
         }
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> Edit(PatientRegisterInputModel input)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(string id, [Bind("FullName,PhoneNumber,BloodType,LocationId,UserId,IsDeleted,DeletedOn,Id,CreatedOn,ModifiedOn")] Patient patient)
         {
-            //if (!this.ModelState.IsValid)
-            //{
-            //    return this.View(input);
-            //}
+            if (id != patient.Id)
+            {
+                return NotFound();
+            }
 
-            //var location = new Location
-            //{
-            //    TownName = input.LocationTownName,
-            //};
-
-            var userId = this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            //var viewModel = this.patientsService.GetPatientByUserId<PatientRegisterInputModel>(userId);
-
-            //var locationToChange = this.locationsRepository.All()
-            //     .Where(x => x.Id == viewModel.LocationId)
-            //     .ToList().FirstOrDefault();
-
-            //locationToChange.Id = location.Id;
-            //locationToChange.TownName = input.LocationTownName;
-
-            //await this.locationsRepository.SaveChangesAsync();
-
-            //var locationId = locationToChange.Id;
-
-            await this.patientsService.DeleteAsync(userId);
-            //await this.patientsService.EditAsync(input.FullName, input.PhoneNumber, input.BloodType, locationId, userId);
-            return this.Redirect("/Patients/Profile");
-
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    db.Update(patient);
+                    await db.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!patientsService.IsRegisteredPatient(patient.UserId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["LocationId"] = new SelectList(db.Locations, "Id", "Id", patient.LocationId);
+            ViewData["UserId"] = new SelectList(db.Users, "Id", "Id", patient.UserId);
+            return View(patient);
         }
     }
 }
