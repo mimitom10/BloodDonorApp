@@ -18,13 +18,13 @@ namespace BloodDonor.Services.Data.LocationsServices
             this.locationsRepository = locationsRepository;
         }
 
-        public IEnumerable<T> GetLabsByTownName<T>(string town)
-        {
-            IQueryable<Location> query =
-                this.locationsRepository.All()
-                .Where(x => x.TownName.ToLower() == town.ToLower());
+        //public IEnumerable<T> GetLabsByTownName<T>(string town)
+        //{
+        //    IQueryable<Location> query =
+        //        this.locationsRepository.All()
+        //        .Where(x => x.TownName.ToLower() == town.ToLower());
 
-            return query.To<T>().ToList();
-        }
+        //    return query.To<T>().ToList();
+        //}
     }
 }

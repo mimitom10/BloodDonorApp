@@ -6,6 +6,6 @@ namespace BloodDonor.Services.Data.LocationsServices
 {
     public interface ILocationsService
     {
-        IEnumerable<T> GetLabsByTownName<T>(string town);
+        //IEnumerable<T> GetLabsByTownName<T>(string town);
     }
 }

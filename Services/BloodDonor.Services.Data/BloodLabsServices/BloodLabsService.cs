@@ -1,14 +1,13 @@
-﻿using BloodDonor.Data.Common.Repositories;
-using BloodDonor.Data.Models;
-using BloodDonor.Services.Mapping;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace BloodDonor.Services.Data.BloodLabsServices
+﻿namespace BloodDonor.Services.Data.BloodLabsServices
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
+    using BloodDonor.Data.Common.Repositories;
+    using BloodDonor.Data.Models;
+    using BloodDonor.Services.Mapping;
+
     public class BloodLabsService : IBloodLabsService
     {
         private readonly IDeletableEntityRepository<BloodLab> bloodLabsRepository;
@@ -25,6 +24,14 @@ namespace BloodDonor.Services.Data.BloodLabsServices
                 .To<T>().FirstOrDefault();
 
             return bloodLab;
+        }
+
+        public IEnumerable<T> GetAll<T>()
+        {
+            IQueryable<BloodLab> query =
+              this.bloodLabsRepository.All().OrderBy(x => x.Location.TownName);
+
+            return query.To<T>().ToList();
         }
 
         public IEnumerable<T> GetLabsByTownName<T>(string town)

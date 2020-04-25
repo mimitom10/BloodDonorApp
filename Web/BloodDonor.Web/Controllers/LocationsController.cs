@@ -1,15 +1,10 @@
-﻿using BloodDonor.Services.Data.BloodLabsServices;
-using BloodDonor.Web.ViewModels.BloodLabs;
-using BloodDonor.Web.ViewModels.Locations;
-using Microsoft.AspNetCore.Mvc;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace BloodDonor.Web.Controllers
+﻿namespace BloodDonor.Web.Controllers
 {
+    using BloodDonor.Services.Data.BloodLabsServices;
+    using BloodDonor.Web.ViewModels.BloodLabs;
+    using BloodDonor.Web.ViewModels.Locations;
+    using Microsoft.AspNetCore.Mvc;
+
     public class LocationsController : Controller
     {
         private readonly IBloodLabsService bloodLabsService;
@@ -19,36 +14,34 @@ namespace BloodDonor.Web.Controllers
             this.bloodLabsService = bloodLabsService;
         }
 
-        public IActionResult LabAddresses()
+        public IActionResult ByTownName(string id)
         {
-            //var viewModel = new LocationViewModel
-            //{
-            //    TownName = town
-            //};
-            return this.View();
-        }
+            string town = id;
 
-       // [HttpPost]
-        //public IActionResult LabAddresses(LocationViewModel input)
-        //{
-        //    string town = input.TownName;
-        //    var viewModel = new BloodLabListViewModel
-        //    {
-        //        BloodLabs = this.bloodLabsService.GetLabsByTownName<BloodLabViewModel>(town),
-        //    };
-
-        //    return Redirect("/Locations/LabAddressesList");
-        //}
-
-
-        public IActionResult LabAddressesList(string town)
-        {
-            var viewModel = new BloodLabListViewModel
+            var viewModelList = new BloodLabListViewModel
             {
                 BloodLabs = this.bloodLabsService.GetLabsByTownName<BloodLabViewModel>(town),
             };
 
-            return this.View(viewModel);
+            if (viewModelList == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.View(viewModelList);
+        }
+
+        public IActionResult LabAddresses()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        public IActionResult LabAddresses(LocationViewModel input)
+        {
+            string town = input.TownName;
+
+            return this.RedirectToAction(nameof(this.ByTownName), new { id = town });
         }
     }
 }
