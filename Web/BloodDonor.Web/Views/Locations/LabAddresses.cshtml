@@ -1,0 +1,21 @@
+﻿@model BloodDonor.Web.ViewModels.Locations.LocationViewModel
+
+<h1> Locations</h1>
+
+<form method="post">
+    <div>
+        <a asp-controller="Locations" asp-action="LabAddressesList">
+            <input type="text" class="form-control" id="exampleInputTownName"
+                   placeholder="Enter Town in which you would like to find Blood Lab">
+        </a>
+    </div>
+
+   
+
+    @*<a href="@category.Url">
+        @category.Title (@category.PostsCount)
+    </a>*@
+
+    <input type="submit" class="btn btn-primary" />
+</form>
+

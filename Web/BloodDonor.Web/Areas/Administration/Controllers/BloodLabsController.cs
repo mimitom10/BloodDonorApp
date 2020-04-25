@@ -14,18 +14,18 @@
 
     [Area("Administration")]
     [Authorize(Roles = "Administrator")]
-    public class PatientsController : Controller
+    public class BloodLabsController : Controller
     {
         private readonly ApplicationDbContext context;
 
-        public PatientsController(ApplicationDbContext context)
+        public BloodLabsController(ApplicationDbContext context)
         {
             this.context = context;
         }
 
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = this.context.Patients.Include(p => p.Location).Include(p => p.User);
+            var applicationDbContext = this.context.BloodLabs.Include(b => b.Location);
             return this.View(await applicationDbContext.ToListAsync());
         }
 
@@ -36,39 +36,36 @@
                 return this.NotFound();
             }
 
-            var patient = await this.context.Patients
-                .Include(p => p.Location)
-                .Include(p => p.User)
+            var bloodLab = await this.context.BloodLabs
+                .Include(b => b.Location)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (patient == null)
+            if (bloodLab == null)
             {
                 return this.NotFound();
             }
 
-            return this.View(patient);
+            return this.View(bloodLab);
         }
 
         public IActionResult Create()
         {
             this.ViewData["LocationId"] = new SelectList(this.context.Locations, "Id", "Id");
-            this.ViewData["UserId"] = new SelectList(this.context.Users, "Id", "Id");
             return this.View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FullName,PhoneNumber,BloodType,LocationId,UserId,IsDeleted,DeletedOn,Id,CreatedOn,ModifiedOn")] Patient patient)
+        public async Task<IActionResult> Create([Bind("Name,Address,PhoneNumber,LocationId,IsDeleted,DeletedOn,Id,CreatedOn,ModifiedOn")] BloodLab bloodLab)
         {
             if (this.ModelState.IsValid)
             {
-                this.context.Add(patient);
+                this.context.Add(bloodLab);
                 await this.context.SaveChangesAsync();
                 return this.RedirectToAction(nameof(this.Index));
             }
 
-            this.ViewData["LocationId"] = new SelectList(this.context.Locations, "Id", "Id", patient.LocationId);
-            this.ViewData["UserId"] = new SelectList(this.context.Users, "Id", "Id", patient.UserId);
-            return this.View(patient);
+            this.ViewData["LocationId"] = new SelectList(this.context.Locations, "Id", "Id", bloodLab.LocationId);
+            return this.View(bloodLab);
         }
 
         public async Task<IActionResult> Edit(string id)
@@ -78,22 +75,21 @@
                 return this.NotFound();
             }
 
-            var patient = await this.context.Patients.FindAsync(id);
-            if (patient == null)
+            var bloodLab = await this.context.BloodLabs.FindAsync(id);
+            if (bloodLab == null)
             {
                 return this.NotFound();
             }
 
-            this.ViewData["LocationId"] = new SelectList(this.context.Locations, "Id", "Id", patient.LocationId);
-            this.ViewData["UserId"] = new SelectList(this.context.Users, "Id", "Id", patient.UserId);
-            return this.View(patient);
+            this.ViewData["LocationId"] = new SelectList(this.context.Locations, "Id", "Id", bloodLab.LocationId);
+            return this.View(bloodLab);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("FullName,PhoneNumber,BloodType,LocationId,UserId,IsDeleted,DeletedOn,Id,CreatedOn,ModifiedOn")] Patient patient)
+        public async Task<IActionResult> Edit(string id, [Bind("Name,Address,PhoneNumber,LocationId,IsDeleted,DeletedOn,Id,CreatedOn,ModifiedOn")] BloodLab bloodLab)
         {
-            if (id != patient.Id)
+            if (id != bloodLab.Id)
             {
                 return this.NotFound();
             }
@@ -102,12 +98,12 @@
             {
                 try
                 {
-                    this.context.Update(patient);
+                    this.context.Update(bloodLab);
                     await this.context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!this.PatientExists(patient.Id))
+                    if (!this.BloodLabExists(bloodLab.Id))
                     {
                         return this.NotFound();
                     }
@@ -120,9 +116,8 @@
                 return this.RedirectToAction(nameof(this.Index));
             }
 
-            this.ViewData["LocationId"] = new SelectList(this.context.Locations, "Id", "Id", patient.LocationId);
-            this.ViewData["UserId"] = new SelectList(this.context.Users, "Id", "Id", patient.UserId);
-            return this.View(patient);
+            this.ViewData["LocationId"] = new SelectList(this.context.Locations, "Id", "Id", bloodLab.LocationId);
+            return this.View(bloodLab);
         }
 
         public async Task<IActionResult> Delete(string id)
@@ -132,16 +127,15 @@
                 return this.NotFound();
             }
 
-            var patient = await this.context.Patients
-                .Include(p => p.Location)
-                .Include(p => p.User)
+            var bloodLab = await this.context.BloodLabs
+                .Include(b => b.Location)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (patient == null)
+            if (bloodLab == null)
             {
                 return this.NotFound();
             }
 
-            return this.View(patient);
+            return this.View(bloodLab);
         }
 
         [HttpPost]
@@ -149,15 +143,15 @@
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var patient = await this.context.Patients.FindAsync(id);
-            this.context.Patients.Remove(patient);
+            var bloodLab = await this.context.BloodLabs.FindAsync(id);
+            this.context.BloodLabs.Remove(bloodLab);
             await this.context.SaveChangesAsync();
             return this.RedirectToAction(nameof(this.Index));
         }
 
-        private bool PatientExists(string id)
+        private bool BloodLabExists(string id)
         {
-            return this.context.Patients.Any(e => e.Id == id);
+            return this.context.BloodLabs.Any(e => e.Id == id);
         }
     }
 }
