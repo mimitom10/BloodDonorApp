@@ -1,9 +1,9 @@
 ﻿@model BloodDonor.Web.ViewModels.Patients.PatientRegisterInputModel
 
-<h1>Register as Patient</h1>
+<h1 style="font-family:'Palatino Linotype'">Register as Patient</h1>
 
 
-<form method="post" asp-action="Register">
+<form method="post" asp-action="Register" style="font-family:'Palatino Linotype'">
     <div>
         <label asp-for="FullName"></label>
         <input asp-for="FullName" class="form-control" />
@@ -28,7 +28,7 @@
         <span asp-validation-for="BloodType" class="text-danger"></span>
     </div>
     <hr />
-    <input type="submit" class="btn btn-primary" />
+    <input type="submit" class="btn btn-primary" style="font-family:'Palatino Linotype'" />
 </form>
 
 

@@ -19,7 +19,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="btn btn-danger" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
+                <a class="btn btn-danger" style="font-family:'Palatino Linotype'" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -27,53 +27,52 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
-                        @*<li class="nav-item">
-                                <a class="btn btn-danger" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>*@
                         <li class="nav-item">
-                            <a class="btn btn-outline-danger" asp-area="" asp-controller="Donors" asp-action="Profile">Donor</a>
+                            <a class="btn btn-outline-danger" style="font-family:'Palatino Linotype'" asp-area="" asp-controller="Donors" asp-action="Profile">Donor</a>
                         </li>
-                        
                         <li class="nav-item">
-                            <a class="btn btn-outline-danger" asp-area="" asp-controller="Patients" asp-action="Profile">Patient</a>
+                            <a class="btn btn-outline-danger" style="font-family:'Palatino Linotype'" asp-area="" asp-controller="Patients" asp-action="Profile">Patient</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-danger" asp-area="" asp-controller="Donors" asp-action="Heroes">Our Heroes</a>
                         </li>
                         @*<li class="nav-item">
-                                <a class="btn btn-danger" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                            </li>*@
+                <a class="btn btn-danger" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </li>*@
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
 
-    <div class="container">
-        <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
-            @this.RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a class="btn btn-danger" asp-area="" asp-controller="Locations" asp-action="LabAddresses">Locations</a>
+            <partial name="_CookieConsentPartial" />
+            <main role="main" class="pb-3">
+                @this.RenderBody()
+            </main>
         </div>
-    </footer>
 
-    <environment names="Development">
-        <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
-        <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
-        <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment names="Staging,Production">
-        <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
-        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
-        <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a class="btn btn-danger" style="font-family:'Palatino Linotype'" asp-area="" asp-controller="Locations" asp-action="LabAddresses">Locations</a>
+            </div>
+        </footer>
 
-    @this.RenderSection("Scripts", required: false)
+        <environment names="Development">
+            <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+            <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+            <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>
+            <script src="~/js/site.js" asp-append-version="true"></script>
+        </environment>
+        <environment names="Staging,Production">
+            <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+            <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
+            <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
+            <script src="~/js/site.min.js" asp-append-version="true"></script>
+        </environment>
+
+        @this.RenderSection("Scripts", required: false)
 </body>
 </html>

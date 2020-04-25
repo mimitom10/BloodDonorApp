@@ -1,7 +1,7 @@
 ﻿@model BloodDonor.Web.ViewModels.BloodLabs.BloodLabListViewModel
 
 
-<h1>List of Labs:</h1>
+<h1 style="font-family:'Palatino Linotype'">List of Labs:</h1>
 
 
 <div class="row">
@@ -9,8 +9,8 @@
     {
         <div class="col-md-4 media">
             <div class="media-body">
-                <h5 class="mt-0">
-                    <a asp-controller="BloodLabs" asp-action="ById" asp-route-id="@lab.Id">
+                <h5 class="mt-0" style="font-family:'Palatino Linotype'">
+                    <a  asp-controller="BloodLabs" asp-action="ById" asp-route-id="@lab.Id">
                         @lab.Name
                     </a>
                 </h5>

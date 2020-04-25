@@ -1,10 +1,12 @@
 ﻿@model BloodDonor.Web.ViewModels.Requests.RequestInputViewModel
 
-<h1>Add your Request</h1>
+<h1 style="font-family:'Palatino Linotype'">Add your Request</h1>
+<h5 style="font-family:'Palatino Linotype'">(You can have maximum 3 active requests)</h5>
 
+<br/>
+<br/>
 
-
-<form method="post" asp-action="Add">
+<form method="post" asp-action="Add" style="font-family:'Palatino Linotype'">
     <div>
         <label asp-for="Quantity"></label>
         <input asp-for="Quantity" class="form-control" />
@@ -24,5 +26,5 @@
     </div>
    
     <hr />
-    <input type="submit" class="btn btn-primary" />
+    <input type="submit" class="btn btn-primary" style="font-family:'Palatino Linotype'" />
 </form>

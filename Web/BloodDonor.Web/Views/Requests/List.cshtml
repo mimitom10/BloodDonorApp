@@ -1,23 +1,26 @@
 ﻿@model BloodDonor.Web.ViewModels.Requests.RequestListViewModel
 
-<h1>Add your Request</h1>
+<h1 style="font-family:'Palatino Linotype'">List of Blood Request</h1>
+<br/>
+<br />
 
-
-<div class="row">
+<div class="row" style="font-family:'Palatino Linotype'">
     @foreach (var request in Model.Requests)
     {
         <div class="col-md-4 media">
             <div class="media-body">
-                <h5 class="mt-0">
+                <h4 class="mt-0">
                     <a asp-controller="Requests" asp-action="ById" asp-route-id="@request.Id">
                         @request.PatientFullName
                     </a>
-                </h5>
-                @request.PatientBloodType
-                @request.PatientLocationTownName
+                    <br/>
+                </h4>
+                <p><strong>Blood Type: </strong>@request.PatientBloodType</p>
+                <p><strong>Location: </strong>@request.PatientLocationTownName</p>
+                <hr />
             </div>
         </div>
+
     }
 </div>
-
 
